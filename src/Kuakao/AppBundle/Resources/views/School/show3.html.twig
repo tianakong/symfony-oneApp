@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <title>分数线</title>
+    <script src="{{ asset('bundles/app/js/jquery-1.11.3.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/radialIndicator.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jquery.animateNumber.min.js') }}"></script>
+    <link rel="stylesheet" href="http://cachecss.kuakao.com/jixun/public/css/public.css" />
+    <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="gxxq">
+    <div class="offer">
+        <div class="clearfix offerTit">
+            <h1 class="fl">学术型学位分数线</h1>
+            <ul id="yearList" class="fr clearfix">
+                <li class="fl on clearfix">
+                    <a href="#X">2016</a>
+                    <span class="fr">|</span>
+                </li>
+                <li class="fl clearfix">
+                    <a href="#X">2015</a>
+                    <span class="fr">|</span>
+                </li>
+                <li class="fl">
+                    <a href="#X">2014</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tabBox">
+            <div class="tabInfo on">
+                <table class="offerTable" border="0" cellpadding="0" cellspacing="0">
+                    <tbody class="offerTableTit">
+                    <tr>
+                        <td class="w1"></td>
+                        <td align="left" class="w2">学科门类</td>
+                        <td class="w3">
+                            总分
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w4">
+                            政治/英语
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w5">数学/专业课</td>
+                    </tr>
+                    </tbody>
+                    <tbody class="offerTableInfo">
+                    <tr>
+                        <td class="w1" rowspan="9" valign="top">
+                            <p class="pt25">A<br>类</p>
+                        </td>
+                        <td align="left" class="w2">
+                            <p>哲学1</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>经济学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>法学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>教育学(不含体育学)</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>文学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>历史学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>理学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>哲学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>享受少数民族照顾政策的考生</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tabText">
+                    <p>A类考生：报考地处一区招生单位的考生。一区系北京、天津、河北、山西、辽宁、吉林、黑龙江、上海、江苏、浙江、安徽、福建、江西、山东、河南、湖北、湖南、广东、重庆、四川、陕西等21省 (市)。</p>
+                </div>
+                <table class="offerTable" border="0" cellpadding="0" cellspacing="0">
+                    <tbody class="offerTableTit">
+                    <tr>
+                        <td class="w1"></td>
+                        <td align="left" class="w2">学科门类</td>
+                        <td class="w3">
+                            总分
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w4">
+                            政治/英语
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w5">数学/专业课</td>
+                    </tr>
+                    </tbody>
+                    <tbody class="offerTableInfo">
+                    <tr>
+                        <td class="w1" rowspan="9" valign="top">
+                            <p class="pt25">B<br>类</p>
+                        </td>
+                        <td align="left" class="w2">
+                            <p>哲学1</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>经济学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>法学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>教育学(不含体育学)</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>文学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>历史学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>理学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>哲学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>享受少数民族照顾政策的考生</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tabText">
+                    <p>B类考生：报考地处二区招生单位的考生。二区系内蒙古、广西、海南、贵州、云南、西藏、甘肃、青海、宁夏、新疆等10省(区)。</p>
+                    <p>报考“少数民族高层次骨干人才计划”考生进入复试的初试成绩基本要求为总分不低于245分。</p>
+                    <p>工学照顾专业: 力学[0801]、冶金工程[0806]、动力工程及工程热物理[0807]、水利工程[0815]、地质资源与地质工程[0818]、矿业工程[0819]、船舶与海洋工程[0824]、航空宇航科学与技术[0825]、兵器科学与技术[0826]、核科学与技术[0827]、农业工程[0828]</p>
+                    <p>中医类照顾专业：中医学[1005]、中西医结合[1006]。</p>
+                    <p>享受少数民族照顾政策的考生：报考地处二区招生单位，且毕业后在国务院公布的民族区域自治地方定向就业的少数民族普通高校应届本科毕业生考生；或者工作单位在国务院公布的民族区域自治地方，且定向就业单位为原单位的少数民族在职人员考生。</p>
+                </div>
+            </div>
+            <div class="tabInfo">
+                <table class="offerTable" border="0" cellpadding="0" cellspacing="0">
+                    <tbody class="offerTableTit">
+                    <tr>
+                        <td class="w1"></td>
+                        <td align="left" class="w2">学科门类</td>
+                        <td class="w3">
+                            总分
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w4">
+                            政治/英语
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w5">数学/专业课</td>
+                    </tr>
+                    </tbody>
+                    <tbody class="offerTableInfo">
+                    <tr>
+                        <td class="w1" rowspan="9" valign="top">
+                            <p class="pt25">A<br>类</p>
+                        </td>
+                        <td align="left" class="w2">
+                            <p>哲学2</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>经济学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>法学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>教育学(不含体育学)</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>文学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>历史学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>理学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>哲学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>享受少数民族照顾政策的考生</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tabText">
+                    <p>A类考生：报考地处一区招生单位的考生。一区系北京、天津、河北、山西、辽宁、吉林、黑龙江、上海、江苏、浙江、安徽、福建、江西、山东、河南、湖北、湖南、广东、重庆、四川、陕西等21省 (市)。</p>
+                </div>
+                <table class="offerTable" border="0" cellpadding="0" cellspacing="0">
+                    <tbody class="offerTableTit">
+                    <tr>
+                        <td class="w1"></td>
+                        <td align="left" class="w2">学科门类</td>
+                        <td class="w3">
+                            总分
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w4">
+                            政治/英语
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w5">数学/专业课</td>
+                    </tr>
+                    </tbody>
+                    <tbody class="offerTableInfo">
+                    <tr>
+                        <td class="w1" rowspan="9" valign="top">
+                            <p class="pt25">B<br>类</p>
+                        </td>
+                        <td align="left" class="w2">
+                            <p>哲学1</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>经济学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>法学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>教育学(不含体育学)</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>文学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>历史学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>理学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>哲学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>享受少数民族照顾政策的考生</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tabText">
+                    <p>B类考生：报考地处二区招生单位的考生。二区系内蒙古、广西、海南、贵州、云南、西藏、甘肃、青海、宁夏、新疆等10省(区)。</p>
+                    <p>报考“少数民族高层次骨干人才计划”考生进入复试的初试成绩基本要求为总分不低于245分。</p>
+                    <p>工学照顾专业: 力学[0801]、冶金工程[0806]、动力工程及工程热物理[0807]、水利工程[0815]、地质资源与地质工程[0818]、矿业工程[0819]、船舶与海洋工程[0824]、航空宇航科学与技术[0825]、兵器科学与技术[0826]、核科学与技术[0827]、农业工程[0828]</p>
+                    <p>中医类照顾专业：中医学[1005]、中西医结合[1006]。</p>
+                    <p>享受少数民族照顾政策的考生：报考地处二区招生单位，且毕业后在国务院公布的民族区域自治地方定向就业的少数民族普通高校应届本科毕业生考生；或者工作单位在国务院公布的民族区域自治地方，且定向就业单位为原单位的少数民族在职人员考生。</p>
+                </div>
+            </div>
+            <div class="tabInfo">
+                <table class="offerTable" border="0" cellpadding="0" cellspacing="0">
+                    <tbody class="offerTableTit">
+                    <tr>
+                        <td class="w1"></td>
+                        <td align="left" class="w2">学科门类</td>
+                        <td class="w3">
+                            总分
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w4">
+                            政治/英语
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w5">数学/专业课</td>
+                    </tr>
+                    </tbody>
+                    <tbody class="offerTableInfo">
+                    <tr>
+                        <td class="w1" rowspan="9" valign="top">
+                            <p class="pt25">A<br>类</p>
+                        </td>
+                        <td align="left" class="w2">
+                            <p>哲学3</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>经济学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>法学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>教育学(不含体育学)</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>文学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>历史学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>理学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>哲学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>享受少数民族照顾政策的考生</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tabText">
+                    <p>A类考生：报考地处一区招生单位的考生。一区系北京、天津、河北、山西、辽宁、吉林、黑龙江、上海、江苏、浙江、安徽、福建、江西、山东、河南、湖北、湖南、广东、重庆、四川、陕西等21省 (市)。</p>
+                </div>
+                <table class="offerTable" border="0" cellpadding="0" cellspacing="0">
+                    <tbody class="offerTableTit">
+                    <tr>
+                        <td class="w1"></td>
+                        <td align="left" class="w2">学科门类</td>
+                        <td class="w3">
+                            总分
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w4">
+                            政治/英语
+                            <span class="fr">|</span>
+                        </td>
+                        <td class="w5">数学/专业课</td>
+                    </tr>
+                    </tbody>
+                    <tbody class="offerTableInfo">
+                    <tr>
+                        <td class="w1" rowspan="9" valign="top">
+                            <p class="pt25">B<br>类</p>
+                        </td>
+                        <td align="left" class="w2">
+                            <p>哲学1</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>经济学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>法学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>教育学(不含体育学)</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>文学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>历史学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>理学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>哲学</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="w2">
+                            <p>享受少数民族照顾政策的考生</p>
+                        </td>
+                        <td class="w3">280</td>
+                        <td class="w4">36</td>
+                        <td class="w5">54</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tabText">
+                    <p>B类考生：报考地处二区招生单位的考生。二区系内蒙古、广西、海南、贵州、云南、西藏、甘肃、青海、宁夏、新疆等10省(区)。</p>
+                    <p>报考“少数民族高层次骨干人才计划”考生进入复试的初试成绩基本要求为总分不低于245分。</p>
+                    <p>工学照顾专业: 力学[0801]、冶金工程[0806]、动力工程及工程热物理[0807]、水利工程[0815]、地质资源与地质工程[0818]、矿业工程[0819]、船舶与海洋工程[0824]、航空宇航科学与技术[0825]、兵器科学与技术[0826]、核科学与技术[0827]、农业工程[0828]</p>
+                    <p>中医类照顾专业：中医学[1005]、中西医结合[1006]。</p>
+                    <p>享受少数民族照顾政策的考生：报考地处二区招生单位，且毕业后在国务院公布的民族区域自治地方定向就业的少数民族普通高校应届本科毕业生考生；或者工作单位在国务院公布的民族区域自治地方，且定向就业单位为原单位的少数民族在职人员考生。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        //年份切换
+        $('#yearList li a').on('click',function(){
+            var index = $('#yearList li a').index($(this));
+            $('#yearList li').removeClass("on");
+            $(this).parent().addClass('on');
+            $(".tabBox .tabInfo").removeClass('on');
+            $(".tabBox .tabInfo").eq(index).addClass('on');
+        });
+    });
+
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</body>
+</html>

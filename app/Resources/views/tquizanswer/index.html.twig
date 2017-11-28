@@ -1,0 +1,34 @@
+{% block body %}
+    <h1>TQuizAnswer list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Answerid</th>
+                <th>Quizid</th>
+                <th>Minscore</th>
+                <th>Maxscore</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tQuizAnswer in tQuizAnswers %}
+            <tr>
+                <td><a href="{{ path('tquizanswer_show', { 'id': tQuizAnswer.answerid }) }}">{{ tQuizAnswer.answerid }}</a></td>
+                <td>{{ tQuizAnswer.quizid }}</td>
+                <td>{{ tQuizAnswer.minScore }}</td>
+                <td>{{ tQuizAnswer.maxScore }}</td>
+                <td>{{ tQuizAnswer.content }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tquizanswer_show', { 'id': tQuizAnswer.answerid }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+

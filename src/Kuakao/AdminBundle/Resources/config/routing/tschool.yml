@@ -1,0 +1,30 @@
+kuakao_admin_school_index:
+    path:     /
+    defaults: { _controller: "KuakaoAdminBundle:TSchool:index" }
+    methods:  GET
+
+kuakao_admin_school_show:
+    path:     /{id}/show
+    defaults: { _controller: "KuakaoAdminBundle:TSchool:show" }
+    methods:  GET
+
+kuakao_admin_school_add:
+    path:     /add
+    defaults: { _controller: "KuakaoAdminBundle:TSchool:add" }
+
+kuakao_admin_school_edit:
+    path:     /edit/
+    defaults: { _controller: "KuakaoAdminBundle:TSchool:edit" }
+    #methods:  [GET, POST]
+
+kuakao_admin_school_delete:
+    path:     /delete/
+    defaults: { _controller: "KuakaoAdminBundle:TSchool:delete" }
+
+kuakao_admin_school_upload:
+    path:     /upload
+    defaults: { _controller: "KuakaoAdminBundle:TSchool:upload" }
+
+kuakao_admin_school_ueditor:
+    path:     /ueditor
+    defaults: { _controller: "KuakaoAdminBundle:TSchool:ueditor" }

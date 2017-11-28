@@ -1,0 +1,24 @@
+kuakao_admin_quiz_index:
+    path:     /quiz
+    defaults: { _controller: "KuakaoAdminBundle:TQuiz:index" }
+
+
+kuakao_admin_quiz_show:
+    path:     /quiz/show/
+    defaults: { _controller: "KuakaoAdminBundle:TQuiz:show" }
+
+
+kuakao_admin_quiz_new:
+    path:     /quiz/new/
+    defaults: { _controller: "KuakaoAdminBundle:TQuiz:new" }
+
+
+kuakao_admin_quiz_edit:
+    path:     /quiz/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TQuiz:edit" }
+
+
+kuakao_admin_quiz_delete:
+    path:     /quiz/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TQuiz:delete" }
+

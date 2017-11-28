@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 50px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>考研啦-考研择校择专业专家</title>
+    <script type="text/javascript" src="http://cachejs.kuakao.com/public/js/jquery-1.11.1.min.js"></script>
+    <script src="{{ asset('bundles/app/js/swiper.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/swiper.animate-twice.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/mobile.swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/mobile.animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/mobile.style.css') }}">
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide slide1">
+            <div class="logo"></div>
+            <h1 class="tit">考研啦 择校择专业专家</h1>
+            <a class="downLoadBtn ani" data-slide-in="at 500 from bounceIn use swing during 1000"  href="https://itunes.apple.com/us/app/kao-yan-la-xuan-xue-xiao-xuan/id1136572827?mt=8"></a>
+            <img class="tapIco" src="{{ asset('bundles/app/images/topIco2.gif') }}" alt="">            </div>
+        <div class="swiper-slide slide2">
+            <div class="person-bg">
+                <div class="circle"></div>
+                <div class="circle1"></div>
+                <img class="school-bd downLoadBtn ani" data-slide-in="at 500 from bounceIn use swing during 1000" src="{{ asset('bundles/app/images/beida.png') }}" alt="">
+                <img class="school-rm downLoadBtn ani" data-slide-in="at 500 from bounceIn use swing during 1000" src="{{ asset('bundles/app/images/renmin.png') }}" alt="">
+                <img class="school-qh downLoadBtn ani" data-slide-in="at 500 from bounceIn use swing during 1000" src="{{ asset('bundles/app/images/qinghua.png') }}" alt="">                </div>
+            <h1 class="slide-2-tit ani" data-slide-in="at 1 from bounceInLeft use swing during 1000">智能推荐学校专业</h1>
+            <p class="slide-2-con ani" data-slide-in="at 1  from bounceInRight use swing during 1000">依据大数据和独家算法，根据个人学业水平智能推荐院校专业，适合自己的才是最好的！</p>
+            <img class="tapIco" src="{{ asset('bundles/app/images/topIco2.gif') }}" alt="">            </div>
+        <div class="swiper-slide slide3">
+            <div class="polygon ani" data-slide-in="at 500 from bounceIn use swing during 1000"></div>
+            <div class="school-name ani" data-slide-in="at 1500 from fadeIn use swing during 500"></div>
+            <h1 class="slide-3-tit ani" data-slide-in="at 1 from bounceInLeft use swing during 1000">海量精准数据</h1>
+            <p class="slide-3-con ani" data-slide-in="at 1 from bounceInRight use swing during 1000">
+                1000多所研究生单位，30000个招生专业，你找不到的内部数据这里都有！</p>
+            <img class="tapIco" src="{{ asset('bundles/app/images/topIco2.gif') }}" alt="">            </div>
+        <div class="swiper-slide slide4">
+            <div class="slide-4-bg ani" data-slide-in="at 0 from slide-4-bg use swing during 1500"></div>
+            <div class="person ani" data-slide-in="at 0 from zoomIn use swing during 1500"></div>
+            <!--<div class="floor"></div>-->
+            <div class="slide-4-star ani" data-slide-in="at 2000 from slide-4-star use swing during 1000"></div>
+            <h1 class="ani"data-slide-in="at 1 from bounceInLeft use swing during 1000">专家团队免费指导</h1>
+            <p class="ani" data-slide-in="at 1 from bounceInRight use swing during 1000">11年行业经验，340位全职老师，考研择校择 专业不再纠结！</p>
+            <img class="tapIco" src="{{ asset('bundles/app/images/topIco2.gif') }}" alt="">            </div>
+        <div class="swiper-slide slide5">
+            <h1 class="slide-5-tit">考研啦 择校择专业专家</h1>
+            <img class="wx" src="{{ asset('bundles/app/images/wx.jpg') }}" alt="">
+            <a class="downLoadbtn ani" data-slide-in="at 500 from bounceIn use swing during 1000" href="https://itunes.apple.com/us/app/kao-yan-la-xuan-xue-xiao-xuan/id1136572827?mt=8">IPhone免费下载</a>            </div>
+    </div>
+</div>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'vertical',
+        loop: false,
+        onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+            swiperAnimateCache(swiper); //隐藏动画元素
+            swiperAnimate(swiper); //初始化完成开始动画
+        },
+        onSlideChangeEnd: function(swiper){
+            swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+        }
+    });
+
+
+    document.getElementsByTagName("html")[0].style.fontSize = 100 * (window.innerWidth/750) + 'px';
+
+</script>
+</body>
+</html>

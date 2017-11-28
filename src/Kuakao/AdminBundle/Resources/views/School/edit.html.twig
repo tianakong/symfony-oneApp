@@ -1,0 +1,239 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header">
+                <h1>院校添加</h1>
+
+            {{ form_start(form, {'attr':{'id':'form_data','novalidate': 'novalidate','class':'form-horizontal well'},'name':'form_data'} ) }}
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">院校名：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.name, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入院校名称'},'id':'name' })  }}
+                </div>
+            </div>
+            <script src="{{ asset('bundles/admin/ueditor/ueditor.config.js') }}"></script>
+            <script src="{{ asset('bundles/admin/ueditor/ueditor.all.min.js') }}"></script>
+            <script src="{{ asset('bundles/admin/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+
+            <link href="{{ asset('bundles/admin/css/plugins/fileinput/fileinput.css') }}" rel="stylesheet" type="text/css" />
+            <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput.js') }}"></script>
+            <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput_locale_zh.js') }}"></script>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">学校logo：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.logo_tmp, {'attr': {'class':'file-loading', 'check':'require', 'msg':'请输入难度系数'},'id':'input-logo', 'type':'file'})  }}
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">院校banner：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.pic_tmp, {'attr': {'class':'file-loading', 'check':'require', 'msg':'请输入难度系数'},'id':'input-pic', 'type':'file'})  }}
+                </div>
+            </div>
+            {#<div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">学校简介：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.about, {'id':'container' })  }}
+                </div>
+            </div>
+            <script type="text/javascript">
+                var editor = new UE.ui.Editor({initialFrameHeight:380});
+                editor.render("container");
+            </script>#}
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">学校简介：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.about, {'attr': {'class':'form-control col-xs-12', 'rows':'15'},'id':'about' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">学校类别：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.schoolType, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'您尚未选择学校类别'},'id':'schoolType' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">学校隶属：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.comesUnder, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'您尚未选择学校隶属'},'id':'comesUnder' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">综合排名：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.rank, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入难度系数'},'id':'rank' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">关注人数：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.gzrs, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入难度系数'},'id':'gzrs' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">所属省份：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.province, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'您尚未选择省份'},'id':'province' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">学校属性：</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            {{ form_widget( form.is211) }} 是否是211
+                        </label>
+                        <label>
+                            {{ form_widget( form.is985) }} 是否是985
+                        </label>
+                        <label>
+                            {{ form_widget( form.isZhx) }} 是否自划线
+                        </label>
+                        <label>
+                            {{ form_widget( form.isYjs) }} 是否是研究生院
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">办学层次：</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            {{ form_widget( form.schoolLevel) }}
+                            <input type="checkbox" id="form_schoolLevel" name="form[schoolLevel][bksy]" value="1" {% if form.schoolLevel.vars.value ==1 or form.schoolLevel.vars.value == 3 %}checked{% endif %}>本科生院
+                        </label>
+                        <label>
+                            <input type="checkbox" id="form_schoolLevel" name="form[schoolLevel][yjsy]" value="2" {% if form.schoolLevel.vars.value ==2 or form.schoolLevel.vars.value == 3 %}checked{% endif %}>研究生院
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">难度系数：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.ndxs, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入难度系数'},'id':'ndxs' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">毕业生分布top5地区：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.area_top, {'attr': {'class':'form-control col-30'},'id':'area_top' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">毕业生分布top5行业：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.trade_top, {'attr': {'class':'form-control col-30'},'id':'trade_top' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">平均薪酬：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.average_wage, {'attr': {'class':'form-control col-30'},'id':'average_wage' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">就业率：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.jyl, {'attr': {'class':'form-control col-30'},'id':'jyl' })  }}
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">博士点：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.doctor, {'attr': {'class':'form-control col-30'},'id':'doctor' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">硕士点：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.master, {'attr': {'class':'form-control col-30'},'id':'master' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">重点学科：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.keySubjects, {'attr': {'class':'form-control col-30'},'id':'keySubjects' })  }}
+                </div>
+            </div>
+
+
+            <span id="msg"></span>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    {{ form_widget( form.submit, {'attr': {'class':'btn btn-sm btn-primary'},'name':'确定修改' })  }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    {% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script>
+        $("#input-logo").fileinput({
+            language: 'zh',
+            uploadUrl: "{{ path('kuakao_admin_school_upload') }}",
+            allowedFileExtensions : ['jpg', 'png','gif'],
+            uploadAsync: false,
+            showUpload: false,
+            maxFileCount: 1,
+            initialPreview: [
+                "<img style='height:160px' src='{{ form.logo.vars.value }}'>",
+            ]
+        });
+        $("#input-pic").fileinput({
+            language: 'zh',
+            uploadUrl: "{{ path('kuakao_admin_school_upload') }}",
+            allowedFileExtensions : ['jpg', 'png','gif'],
+            uploadAsync: false,
+            showUpload: false,
+            maxFileCount: 1,
+            initialPreview: [
+                "<img style='height:160px' src='{{ form.pic.vars.value }}'>",
+            ]
+        });
+    </script>
+
+
+    <script>
+        function save() {
+            if (check_form("form_data")) {
+                var vars = $("#form_data").serialize();
+                sendAjax("{{ path('kuakao_admin_school_add') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            parent.location.reload(true);
+                            myclose();
+                        });
+                    } else {
+                        ui_error(data.info);
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

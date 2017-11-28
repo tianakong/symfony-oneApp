@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}首页!{% endblock %}</title>
+    {% block css %}
+        <link href="{{ asset('bundles/admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/css/animate.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/css/plugins/gritter/jquery.gritter.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/css/plugins/nouslider/jquery.nouislider.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/css/style.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/admin/css/xiaowei.css') }}" rel="stylesheet" type="text/css" />
+    {% endblock %}
+    {% block javascript %}
+        <script src="{{ asset('bundles/admin/js/jquery-2.1.1.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/inspinia.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/common.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/pace/pace.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/nouslider/jquery.nouislider.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/toastr/toastr.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/gritter/jquery.gritter.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/bootbox/bootbox.min.js') }}"></script>
+    {% endblock %}
+</head>
+<script>
+    //var upload_url = "/index.php?m=&c=index&a=upload";
+    //var del_url = "/index.php?m=&c=index&a=del_file";
+   // var app_path = "";
+    //var cookie_prefix = "";
+    //var link_select = "/index.php?m=&c=popup&a=link_select";
+</script>
+<body>
+<div class="shade"></div>
+{% block topMenu %}
+{{ render( controller('KuakaoAdminBundle:Base:top') ) }}
+{% endblock %}
+<div id="wrapper">
+    {% block leftMenu %}
+        {{ render( controller('KuakaoAdminBundle:Base:leftMenu') ) }}
+    {% endblock %}
+    <div id="page-wrapper" class="gray-bg">
+        {% block cur %}
+        <div class="row wrapper border-bottom gray-bg">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="fa fa-home home-icon"></i>
+                        <a href="/">Home</a>
+                    </li>
+                    <li><!--当前位置--></li>
+                </ul><!-- .breadcrumb -->
+            </div>
+        </div>
+        {% endblock %}
+        {% block body %}{% endblock %}
+    </div>
+</div>
+{% block jsCode %}{% endblock %}
+<script type="text/javascript">
+    $(function() {
+        if (!is_mobile()) {
+            WinMove();
+        }
+        init_sort("undefined11,12,|21,22,");
+    });
+    function init_sort(sort_string) {
+        if (sort_string == "") {
+            sort_string = "11,12,13|21,22,23";
+        }
+        array_sort_string = sort_string.split("|");
+        sort_string_1 = array_sort_string[0];
+        sort_string_2 = array_sort_string[1];
+        array_sort = sort_string_1.split(",");
+
+        for (x in array_sort) {
+            index = array_sort[x];
+            last = $("#t1 .ibox:last");
+            current = $(".ibox[sort='" + index + "']");
+            if (index !== last.attr("sort")) {
+                current.insertAfter(last);
+            }
+        }
+
+        array_sort = sort_string_2.split(",");
+        for (x in array_sort) {
+            index = array_sort[x];
+            last = $("#t2 .ibox:last");
+            current = $(".ibox[sort='" + index + "']");
+            if (index !== last.attr("sort")) {
+                current.insertAfter(last);
+            }
+        }
+    };
+    function set_sort() {
+        var sort_string;
+        $("#t1 .ibox").each(function() {
+            sort_string = sort_string + $(this).attr("sort") + ",";
+        });
+        sort_string = sort_string + "|";
+        $("#t2 .ibox").each(function() {
+            sort_string = sort_string + $(this).attr("sort") + ",";
+        });
+        sendAjax("/index.php?m=&c=index&a=set_sort", "val=" + sort_string);
+    }
+
+    // Dragable panels
+    function WinMove() {
+        var element = "[class*=col]";
+        var handle = ".ibox-title";
+        var connect = "[class*=col]";
+        $(element).sortable({
+            handle : handle,
+            connectWith : connect,
+            cancel : ".ibox-tools",
+            tolerance : 'pointer',
+            forcePlaceholderSize : true,
+            opacity : 0.8,
+            stop : function(event, ui) {
+                t1_count = $("#t1 .ibox").length;
+                t2_count = $("#t2 .ibox").length;
+                if ((t1_count == 0) || (t2_count == 0)) {
+                    ui_error("至少保留一个");
+                    $(element).sortable('cancel');
+                    return false;
+                } else {
+                    set_sort();
+                }
+            }
+        }).disableSelection();
+    }
+    function select_pid() {
+        winopen('{{ path('kuakao_admin_menu_selectParent') }}', 560, 470);
+    }
+</script>
+</body>
+</html>

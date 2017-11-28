@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考研啦APP-考研择校择专业专家</title>
+    <script type="text/javascript" src="http://cachejs.kuakao.com/public/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="http://cachejs.kuakao.com/jixun/public/js/jquery.SuperSlide.2.1.js"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/pc.public.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/pc.style.css') }}">
+    <script>
+        $(function(){
+
+
+            $(document).scroll(function(){
+                var scrollPX = $(document).scrollTop();
+
+                if(scrollPX>600){
+                    $(".bg2 .text").addClass("dh3");
+                    $(".bg2 .phone").addClass("dh4");
+                }
+                if(scrollPX>1300){
+                    $(".bg3 .text").addClass("dh5");
+                    $(".bg3 .phone").addClass("dh6");
+                }
+            })
+
+            $(".icoList .i2").hover(function(){
+                $(".ewm").show();
+            },function(){
+                $(".ewm").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="top">
+    <div class="container clearfix">
+        <a class="logo fl" href="javascript:void(0)">考研啦官网</a>
+        <ul class="fr">
+            <li><a class="on" href="javascript:void(0)">首页</a></li>
+            <li><span><img src="{{ asset('bundles/app/images/dot_05.jpg') }}" alt=""></span></li>
+            <li><a href="#mt">媒体报道</a></li>
+            <li><span><img src="{{ asset('bundles/app/images/dot_05.jpg') }}" alt=""></span></li>
+            <li><a href="{{ path('kuakao_app_default_aboutus') }}">关于我们</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="index">
+    <div class="banner">
+        <div class="fullSlide">
+
+            <div class="bd">
+                <ul>
+
+                    <li style="background:url({{ asset('bundles/app/images/banner1_04.jpg') }}) center 0 no-repeat;"></li>
+                    <li style="background:url({{ asset('bundles/app/images/banner2_04.jpg') }}) center 0 no-repeat;"></li>
+                    <li style="background:url({{ asset('bundles/app/images/banner3_04.jpg') }}) center 0 no-repeat;"></li>
+                </ul>
+            </div>
+
+            <div class="hd">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            jQuery(".fullSlide").slide({ titCell:".hd li", mainCell:".bd ul", effect:"fold",  autoPlay:true, delayTime:700,interTime:5000 });
+        </script>
+        <div class="bannerBtn">
+            <div class="clearfix btnBox">
+                <div class="fl">
+                    <a class="ios" href="https://itunes.apple.com/us/app/kao-yan-la-xuan-xue-xiao-xuan/id1136572827?mt=8" target="_blank">IPhone版</a>
+                    <a class="android" href="#X">
+                        Android版
+                        <span>敬请期待</span>
+                    </a>
+                </div>
+                <img class="fr" src="{{ asset('bundles/app/images/btn_05.png') }}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="bg1">
+        <div class="container">
+            <div class="text dh1">
+                <h1>智能推荐最适合的院校专业</h1>
+                <p>选择大于努力——每年都有很多成功跨考211等名校、实现人生转折的同学，<br>但是我们也应该看到更多报考这些名校的同学成为了“陪考族”。名校一般<br>专业不一定比一般院校优势专业好就业，但是竞争却激烈的多。<br>考研啦致力于让报考更理智更科学，依据大数据和独家算法，根据个人学科<br>水平智能匹配院校专业，适合自己的才是最好的。
+                </p>
+            </div>
+
+            <img class="phone dh2" src="{{ asset('bundles/app/images/phone_11.jpg') }}" alt="">
+        </div>
+    </div>
+
+    <div class="bg2">
+        <div class="container">
+            <div class="text">
+                <h1>海量精准数据一网打尽</h1>
+                <p>多维度全覆盖-根据学校查专业，根据专业查学校，我们不止关注名校和热门专业，<br>不管你的需求有多小众，都是我们努力的方向。1000多所研招院校，3000多个<br>研究生专业，100000万条分数线、招生人数、初试科目等和报考息息相关的数据，<br>你找的到的、找不到的这里都有。</p>
+            </div>
+            <img class="phone" src="{{ asset('bundles/app/images/phone_11.jpg') }}" alt="">
+        </div>
+    </div>
+
+    <div class="bg3">
+        <div class="container">
+            <div class="text">
+                <h1>百位考研专家团队免费指导</h1>
+                <p>名师免费辅导-师哥师姐问多了都会烦，但是考研啦的老师全都免费为你定制报考方案，<br>不会厌烦。11年考研行业培训经验，340位考研行业规划师，成功帮助50000余名<br>跨校跨专业考生选择院校专业，实现人生逆袭。</p>
+            </div>
+            <img class="phone" src="{{ asset('bundles/app/images/phone_18.jpg') }}" alt="">
+        </div>
+    </div>
+
+    <a name="mt"></a>
+    <div class="bg4">
+        <div class="container">
+            <h3>媒体报道</h3>
+            <div class="clearfix">
+                <div class="fl">
+                    <div class="focusBox" style="margin:0 auto">
+                        <ul class="pic">
+                            <li><img src="{{ asset('bundles/app/images/app_23.jpg') }}"/></li>
+                            <li><img src="{{ asset('bundles/app/images/app_23.jpg') }}"/></li>
+                            <li><img src="{{ asset('bundles/app/images/app_23.jpg') }}"/></li>
+                        </ul>
+                        <a class="prev" href="javascript:void(0)"></a>
+                        <a class="next" href="javascript:void(0)"></a>
+                        <ul class="hd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+
+                    <script type="text/javascript">
+                        /*鼠标移过，左右按钮显示*/
+                        jQuery(".focusBox").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",1) },function(){ jQuery(this).find(".prev,.next").fadeOut() });
+                        /*SuperSlide图片切换*/
+                        jQuery(".focusBox").slide({ mainCell:".pic",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});
+                    </script>
+                </div>
+                <ul class="fr">
+                    <li class="clearfix"><img class="fl" src="{{ asset('bundles/app/images/newsLogo_26.jpg') }}" alt=""><a class="fl" href="http://www.kuakao.com/daer/26056.html" target="_blank">考研啦app1.0上线，考研科学报考的时代到来</a></li>
+                    <li class="clearfix"><img class="fl" src="{{ asset('bundles/app/images/newsLogo_29.jpg') }}" alt=""><a class="fl" href="http://www.kuakao.com/daer/26056.html" target="_blank">考研啦app1.0上线，考研科学报考的时代到来</a></li>
+                    <li class="clearfix"><img class="fl" src="{{ asset('bundles/app/images/newsLogo_31.jpg') }}" alt=""><a class="fl" href="http://www.kuakao.com/daer/26056.html" target="_blank">考研啦app1.0上线，考研科学报考的时代到来</a></li>
+                    <li class="clearfix"><img class="fl" src="{{ asset('bundles/app/images/newsLogo_33.jpg') }}" alt=""><a class="fl" href="http://www.kuakao.com/daer/26056.html" target="_blank">考研啦app1.0上线，考研科学报考的时代到来</a></li>
+                    <li class="clearfix"><img class="fl" src="{{ asset('bundles/app/images/newsLogo_35.jpg') }}" alt=""><a class="fl" href="http://www.kuakao.com/daer/26056.html" target="_blank">考研啦app1.0上线，考研科学报考的时代到来</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container clearfix">
+        <div class="fl">
+            <ul class="linkList clearfix">
+                <li class="fl"><a href="{{ path('kuakao_app_default_aboutus') }}">加入我们</a></li>
+                <li class="fl"><span>|</span></li>
+                <li class="fl"><a href="{{ path('kuakao_app_default_aboutus') }}">隐私保护</a></li>
+            </ul>
+            <p>Copyright@2004-2014 www.kuakao.com All Right Reserived 京 ICP备11041699号－3</p>
+            <p>咨询热线：400-883-2220</p>
+        </div>
+        <ul class="fr icoList clearfix">
+            <li class="fl"><a class="i1" href="http://shang.qq.com/wpa/qunwpa?idkey=7af4697d3b75b0b094bf67f8ae205693395ab2172ad5e59b7d99d51bbe2e7951" alt="考研啦-院校选择专家" title="考研啦-院校选择专家" target="_blank"></a></li>
+            <li class="fl">
+                <img class="ewm" src="{{ asset('bundles/app/images/ewm.png') }}" alt="">
+                <a class="i2" href="javascript:void(0)" title="微信扫一扫"></a>
+            </li>
+            <li class="fl"><a class="i3" href="http://weibo.com/kuakao" title="考研啦官方微博" target="_blank"></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+parameters:
+    ueditor.class: Kuakao\Service\ueditor\ueditor
+    ueditor.config:
+        config: "%kernel.root_dir%/config/config.json"
+
+    parameter.class: Kuakao\Service\Parameters\parameter
+    parameter.config:
+        school_comes_under:
+            1: 教育部直属
+            2: 其他部委
+            3: 地方所属
+        school_type:
+            1: 理工类
+            2: 艺术类
+            3: 综合类
+            4: 师范类
+            5: 农林类
+            6: 政法类
+            7: 民族类
+            8: 医药类
+            9: 军事类
+            10: 财经类
+            11: 党校类
+            12: 科研院所
+            13: 体育类
+            14: 语言类
+
+services:
+#    kuakao_admin.example:
+#        class: Kuakao\AdminBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+    file.save_file_handler:
+        class: Kuakao\Service\File\SaveFileHandler
+        arguments: [@service_container]
+
+    ueditor:
+        class: Kuakao\Service\ueditor\ueditor
+        arguments: [%ueditor.config%]
+
+    parameter:
+        class: %parameter.class%
+        arguments: [%parameter.config%]

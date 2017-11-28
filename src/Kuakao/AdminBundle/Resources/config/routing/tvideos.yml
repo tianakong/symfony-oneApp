@@ -1,0 +1,19 @@
+kuakao_admin_videos_index:
+    path:     /videos/
+    defaults: { _controller: "KuakaoAdminBundle:TVideos:index" }
+
+
+kuakao_admin_videos_add:
+    path:     /videos/add/
+    defaults: { _controller: "KuakaoAdminBundle:TVideos:add" }
+
+
+kuakao_admin_videos_edit:
+    path:     /videos/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TVideos:edit" }
+
+
+kuakao_admin_videos_delete:
+    path:     /videos/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TVideos:delete" }
+

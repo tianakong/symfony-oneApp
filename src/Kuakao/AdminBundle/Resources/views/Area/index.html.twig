@@ -1,0 +1,91 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+
+            <div class="operate panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <a class="btn btn-sm btn-primary" onclick="add();">添加</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ul_table message-container ul_table_responsive">
+                <ul>
+                    <li class="thead">
+                        <div class="pull-left">
+                            <span class="col-4">ID</span>
+                            <span class="col-14 ">省市</span>
+                            <span class="col-14 ">所属分区</span>
+                            <span class="col-14 ">排序</span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="col-12 ">管理</span>
+                        </div>
+                    </li>
+                    {% for tAreas in tAreas %}
+                        <li class="tbody">
+                            <div class="pull-left">
+                                <span class="col-4">{{ tAreas.id }}</span>
+                                <span class="col-14 ">{{ tAreas.name }}</span>
+                                <span class="col-14 ">{% if tAreas.zone == '1' %}一区{% elseif tAreas.zone == '2' %}二区{% else %}尚未设置{% endif %}</span>
+                                <span class="col-14 ">{{ tAreas.listorder }}</span>
+                            </div>
+                            <div class="pull-right">
+                                <span class="col-12"><a onclick="edit('{{ path('kuakao_admin_area_edit', { 'id': tAreas.id }) }}');" class="btn btn-sm btn-primary">修改</a> <a onclick="del({{ tAreas.id }});"  class="btn btn-sm btn-danger">删除</a></span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    {{ knp_pagination_render(tAreas) }}
+
+                </ul>
+            </div>
+        </div>
+    {% endautoescape %}
+{% endblock %}
+
+{% block jsCode %}
+    <script type="text/javascript">
+
+        function add() {
+            winopen("{{ path('kuakao_admin_area_add') }}",560, 370);
+        };
+
+
+        function edit(url) {
+            winopen(url,560, 370);
+        }
+
+        function del(id) {
+            var vars = 'id='+id;
+            ui_confirm('确定要删除吗?', function() {
+                sendAjax("{{ path('kuakao_admin_area_delete') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            window.location.href="{{ path('kuakao_admin_area_index') }}";
+                        });
+                    } else {
+                        ui_alert(data.info, function() {});
+                    }
+                });
+            });
+        }
+
+        function showdata(result) {
+            for (var s in result.data) {
+                set_val(s, result.data[s]);
+            }
+        }
+
+        $(document).ready(function() {
+            $(".sub_left_menu tbody tr").click(function() {
+                $(".sub_left_menu  tr.active").removeClass("active");
+                $(this).attr("class", "active");
+                sendAjax("{{ path('kuakao_admin_adminrole_read') }}", "id=" + $(this).attr("id"), function(data) {
+                    showdata(data);
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

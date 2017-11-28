@@ -1,0 +1,125 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header clearfix">
+                <h1 class="col-sm-8">搜索</h1>
+                <div class="col-sm-4 search_box">
+                    <form name="form_search" id="form_search" method="get" class="pull-right">
+                        <div class="input-group col-20">
+                            <input  class="form-control" type="text" name="school_name" id="keyword"/>
+                            <div class="input-group-btn">
+                                <a class="btn btn-sm btn-info" onclick="submit_search();"><i class="fa fa-search" ></i></a>
+                                <a class="btn btn-sm btn-success" onclick="toggle_adv_search();"><i id="toggle_adv_search_icon" class="fa fa-chevron-down bigger-125"></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <form method="get" name="form_adv_search" id="form_adv_search">
+                <div class="adv_search panel panel-default  hidden"  id="adv_search">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <h4 class="col-xs-6">高级搜索</h4>
+                            <div class="col-xs-6 text-right">
+                                <a  class="btn btn-sm btn-info" onclick="submit_adv_search();">搜索</a>
+                                <a  class="btn btn-sm " onclick="close_adv_search();">关闭</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-group col-sm-4">
+                            <label class="col-sm-4 control-label" for="school_name">院校名：</label>
+                            <div class="col-sm-8">
+                                <input  class="form-control" type="text" id="school_name" name="school_name" >
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            <div class="operate panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <a class="btn btn-sm btn-primary" href="{{ path('kuakao_admin_school_add') }}">添加</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ul_table message-container ul_table_responsive">
+                <ul>
+                    <li class="thead">
+                        <div class="pull-left">
+                            <span class="col-4">ID</span>
+                            <span class="col-10 ">学校名称</span>
+                            <span class="col-10 ">所在地</span>
+                            <span class="col-10 ">隶属</span>
+                            <span class="col-10 ">学校类型</span>
+                            <span class="col-10 ">难度系数</span>
+                            <span class="col-10 ">发布人</span>
+                            <span class="col-10 ">更新时间</span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="col-12 ">管理</span>
+                        </div>
+                    </li>
+
+                        {% for tSchool in tSchools %}
+                        <li class="tbody">
+                            <div class="pull-left">
+                                <span class="col-4">{{ tSchool.id }}</span>
+                                <span class="col-10 ">{{ tSchool.name }}</span>
+                                <span class="col-10 ">{{ area[tSchool.province].name|default("暂无") }}</span>
+                                <span class="col-10 ">{{ school_comes_under[tSchool.comesUnder]|default("未选择") }}</span>
+                                <span class="col-10 ">{{ school_type[tSchool.schoolType]|default("未选择") }}</span>
+                                <span class="col-10 ">{{ tSchool.ndxs }}</span>
+                                <span class="col-10 ">发布人</span>
+                                <span class="col-10 ">{{ tSchool.updatetime|date("Y-m-d H:i:s") }}</span>
+                            </div>
+                            <div class="pull-right">
+                                <span class="col-12"><a href="{{ path('kuakao_admin_school_edit', { 'id': tSchool.id }) }}" class="btn btn-sm btn-primary">修改</a> <a onclick="del({{ tSchool.id }});"  class="btn btn-sm btn-danger">删除</a></span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        {{ knp_pagination_render(tSchools) }}
+                </ul>
+            </div>
+        </div>
+    {% endautoescape %}
+{% endblock %}
+
+{% block jsCode %}
+    <script type="text/javascript">
+        function del(id) {
+            var vars = 'id='+id;
+            ui_confirm('确定要删除吗?', function() {
+                sendAjax("{{ path('kuakao_admin_school_delete') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            window.location.href="{{ path('kuakao_admin_school_index') }}";
+                        });
+                    } else {
+                        ui_alert(data.info, function() {});
+                    }
+                });
+            });
+        }
+
+        function showdata(result) {
+            for (var s in result.data) {
+                set_val(s, result.data[s]);
+            }
+        }
+
+        $(document).ready(function() {
+            $(".sub_left_menu tbody tr").click(function() {
+                $(".sub_left_menu  tr.active").removeClass("active");
+                $(this).attr("class", "active");
+                sendAjax("{{ path('kuakao_admin_adminrole_read') }}", "id=" + $(this).attr("id"), function(data) {
+                    showdata(data);
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

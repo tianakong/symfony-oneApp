@@ -1,0 +1,23 @@
+kuakao_admin_categoryinfo_index:
+    path:     /categoryinfo/
+    defaults: { _controller: "KuakaoAdminBundle:TCategoryInfo:index" }
+
+kuakao_admin_categoryinfo_show:
+    path:     /categoryinfo/show/
+    defaults: { _controller: "KuakaoAdminBundle:TCategoryInfo:show" }
+
+kuakao_admin_categoryinfo_new:
+    path:     /categoryinfo/new/
+    defaults: { _controller: "KuakaoAdminBundle:TCategoryInfo:new" }
+
+kuakao_admin_categoryinfo_edit:
+    path:     /categoryinfo/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TCategoryInfo:edit" }
+
+kuakao_admin_categoryinfo_delete:
+    path:     /categoryinfo/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TCategoryInfo:delete" }
+
+kuakao_admin_categoryinfo_upload:
+    path:     /categoryinfo/upload/
+    defaults: { _controller: "KuakaoAdminBundle:TCategoryInfo:upload" }

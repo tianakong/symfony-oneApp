@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ special.title }}|专题详情</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/style.css') }}">
+    <script>
+        document.getElementsByTagName("html")[0].style.fontSize = 100 * (document.documentElement.clientWidth /750) + 'px';
+    </script>
+</head>
+<body>
+<section class="inforBar">
+    <header>
+        <h4>{{ special.title }}</h4>
+        <p><span>{{ special.time|date('Y-m-d') }}</span><span>专题</span><span>阅读3020+</span></p>
+    </header>
+    <section class="questionList">
+        {% autoescape %}
+     {{ special.content|raw }}
+        {% endautoescape %}
+    </section>
+</section>
+
+</body>
+</html>

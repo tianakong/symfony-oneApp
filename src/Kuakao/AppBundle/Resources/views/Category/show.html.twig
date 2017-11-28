@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>专家说</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css"  href="/bundles/app/css/style.css" >
+    <script>
+        document.getElementsByTagName("html")[0].style.fontSize = 100 * (document.documentElement.clientWidth /750) + 'px';
+    </script>
+
+</head>
+<body>
+<section class="expertSay">
+    <section class="userBar">
+        <div class="line"><img src="{{ asset('bundles/app/images/user_03.png') }}" class="blk"></div>
+        <div class="userImg">
+            <img src="{{ asset( expert.headpath ) }}" alt="" class="blk">
+        </div>
+        <div class="userDetail">
+            <h4>{{ expert.name }}</h4>
+            <p>擅长科目：{{ expert.subject }}</p>
+        </div>
+    </section>
+    <section class="articleBar">
+        <h4 class="theTit"><span></span>介绍</h4>
+        <p>{{ expert.introduce }}</p>
+    </section>
+
+</section>
+
+</body>
+</html>

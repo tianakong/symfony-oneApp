@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ categoryinfo.title }}|排行榜</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/top.style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/api.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/app.css') }}">
+    <script type="text/javascript" src="{{ asset('bundles/app/js/jquery-1.11.3.js') }}"></script>
+</head>
+
+<body>
+    <div class="schoolRank">
+        <div class="header">
+            <h1>{{ categoryinfo.title }}</h1>
+            <p>一&nbsp;&nbsp;&nbsp;数据来源：教育部&nbsp;&nbsp;&nbsp;一</p>
+        </div>
+        <div class="main">
+            {% autoescape %}
+                {{ categoryinfo.content|raw }}
+            {% endautoescape %}
+        </div>
+        <p class="notice">该结果为学生选报学科、专业提供参考</p>
+    </div>
+
+    <script>
+        $(function(){
+            $(".listBox .schoolList").find("li:last").addClass("last");
+            $(".listBox .btn").click(function(){
+                if($(this).next().is(":hidden")){
+                    $(".listBox .schoolList").stop().slideUp();
+                    $(".listBox .ico").removeClass("up");
+                    $(this).find(".ico").addClass("up");
+                    $(this).next().stop().slideToggle();
+                    console.log(1);
+                }else {
+                    $(".listBox .schoolList").stop().slideUp();
+                    $(this).find(".ico").removeClass("up");
+
+                    $(this).next().stop().slideToggle();
+                    console.log(2);
+                }
+            });
+
+        });
+
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</body>
+</html>

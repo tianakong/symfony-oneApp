@@ -1,0 +1,124 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header">
+                <h1>编辑视频</h1>
+            </div>
+            <link href="{{ asset('bundles/admin/css/plugins/fileinput/fileinput.css') }}" rel="stylesheet" type="text/css" />
+            <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput.js') }}"></script>
+            <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput_locale_zh.js') }}"></script>
+            {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+            <input type="hidden" name="ajax" id="ajax" value="1">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">视频标题：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.description, {'attr': {'class':'form-control col-30'},'id':'description' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">头像地址：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.headPath, {'attr': {'class':'form-control col-30'},'id':'headPath' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="image">缩略图：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.new_thumb, {'attr': {'class':'file-loading', 'check':'require', 'msg':'缩率图不能为空'},'id':'new_thumb' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">视频ID：</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-30" type="text" name="video" id="video" value="{{ videosData.video }}"  >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">播放次数：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.views, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入播放次数'},'id':'views' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">主讲人：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.speaker, {'attr': {'class':'form-control col-30'},'id':'speaker' })  }}
+                </div>
+            </div>
+
+            {#<script src="{{ asset('bundles/admin/ueditor/ueditor.config.js') }}"></script>
+            <script src="{{ asset('bundles/admin/ueditor/ueditor.all.min.js') }}"></script>
+            <script src="{{ asset('bundles/admin/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">课程介绍：</label>
+                <div class="col-sm-8">
+                    {{ form_widget( form.detail, {'attr': { 'check':'require', 'msg':'请输入课程介绍'},'id':'detail' })  }}
+                </div>
+            </div>
+            <script type="text/javascript">
+                var editor = new UE.ui.Editor({initialFrameHeight:300});
+                editor.render("detail");
+            </script>#}
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">主讲人介绍：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.title, {'attr': {'class':'form-control col-xs-12', 'rows':'10'},'id':'title' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">课程介绍：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.detail, {'attr': {'class':'form-control col-xs-12', 'rows':'15'},'id':'detail' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">视频状态：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.status, {'attr': {'class':'form-control col-30'},'id':'status' })  }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    {#<a onclick="save()"  class="btn btn-sm btn-primary">修改</a>#}
+                    {{ form_widget( form.submit, {'attr': {'class':'btn btn-sm btn-primary'},'name':'确定修改' })  }}
+
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    {% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script>
+        $("#new_thumb").fileinput({
+            language: 'zh',
+            allowedFileExtensions : ['jpg', 'png','gif'],
+            uploadAsync: false,
+            showUpload: false,
+            maxFileCount: 1,
+            initialPreview: [
+                "<img style='height:160px' src='{{ form.thumb.vars.value }}'>",
+            ]
+        });
+    </script>
+    <script>
+        function save() {
+            if (check_form("form_data")) {
+                var vars = $("#form_data").serialize();
+                sendAjax("{{ path('kuakao_admin_videos_edit', {'id':id}) }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            window.location.href='{{ path('kuakao_admin_videos_index')}}';
+                            myclose();
+                        });
+                    } else {
+                        ui_error(data.info);
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

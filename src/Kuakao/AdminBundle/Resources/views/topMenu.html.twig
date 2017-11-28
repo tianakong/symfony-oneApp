@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default row" role="navigation" id="top_menu">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-6">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-bars fa-lg"></i>
+        </button>
+        <div class="hidden-xs">
+            &nbsp;
+        </div>
+        <a href="/" class="navbar-brand">考研啦</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-6">
+        <ul class="nav navbar-nav navbar-right">
+            {% for val in menuData %}
+            <a class="nav-app" href="javascript:void(0);" url="" node="{{ val.id }}" onclick="click_top_menu(this)" ><i class="fa fa-cogs"></i>{{ val.name }}</a>
+            {% endfor %}
+            <a class="nav-app btn-danger" href="{{ path('kuakao_admin_index_loginOut') }}"><i class="fa fa-sign-out"></i>退出</a>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>

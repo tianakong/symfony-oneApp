@@ -1,0 +1,6 @@
+<select class="form-control col-20" name="yjxk" id="yjxk">
+    <option value="0">请选择一级学科</option>
+    {% for val in Yjxk %}
+        <option value="{{ val.yjname }},{{ val.yjnum }}">{{ val.yjname }}</option>
+    {% endfor %}
+</select>

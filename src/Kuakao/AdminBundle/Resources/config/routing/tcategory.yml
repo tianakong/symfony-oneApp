@@ -1,0 +1,19 @@
+kuakao_admin_category_index:
+    path:     /category/
+    defaults: { _controller: "KuakaoAdminBundle:TCategory:index" }
+
+kuakao_admin_category_show:
+    path:     /category/show/
+    defaults: { _controller: "KuakaoAdminBundle:TCategory:show" }
+
+kuakao_admin_category_new:
+    path:     /category/new/
+    defaults: { _controller: "KuakaoAdminBundle:TCategory:new" }
+
+kuakao_admin_category_edit:
+    path:     /category/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TCategory:edit" }
+
+kuakao_admin_category_delete:
+    path:     /category/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TCategory:delete" }

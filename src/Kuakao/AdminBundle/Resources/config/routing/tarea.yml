@@ -1,0 +1,20 @@
+kuakao_admin_area_index:
+    path:     /
+    defaults: { _controller: "KuakaoAdminBundle:TArea:index" }
+
+kuakao_admin_area_show:
+    path:     /{id}/show
+    defaults: { _controller: "KuakaoAdminBundle:TArea:show" }
+    methods:  GET
+
+kuakao_admin_area_add:
+    path:     /add
+    defaults: { _controller: "KuakaoAdminBundle:TArea:add" }
+
+kuakao_admin_area_edit:
+    path:     /edit/
+    defaults: { _controller: "KuakaoAdminBundle:TArea:edit" }
+
+kuakao_admin_area_delete:
+    path:     /delete/
+    defaults: { _controller: "KuakaoAdminBundle:TArea:delete" }

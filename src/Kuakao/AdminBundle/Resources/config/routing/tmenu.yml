@@ -1,0 +1,18 @@
+kuakao_admin_menu_index:
+    path:     /menu/
+    defaults: { _controller: KuakaoAdminBundle:Menu:index }
+kuakao_admin_menu_add:
+    path:     /menu/add/
+    defaults: { _controller: KuakaoAdminBundle:Menu:add }
+kuakao_admin_menu_read:
+    path:     /menu/read/
+    defaults: { _controller: KuakaoAdminBundle:Menu:read }
+kuakao_admin_menu_edit:
+    path:     /menu/edit/
+    defaults: { _controller: KuakaoAdminBundle:Menu:edit}
+kuakao_admin_menu_delete:
+    path:     /menu/delete/
+    defaults: { _controller: KuakaoAdminBundle:Menu:delete }
+kuakao_admin_menu_selectParent:
+    path:     /menu/selectParent/
+    defaults: { _controller: KuakaoAdminBundle:Menu:selectParent }

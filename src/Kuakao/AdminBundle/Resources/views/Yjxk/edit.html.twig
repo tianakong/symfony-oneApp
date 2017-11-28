@@ -1,0 +1,69 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>编辑一级学科</h1>
+    </div>
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+        <input type="hidden" name="ajax" id="ajax" value="1">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">学科门类名称：</label>
+            <div class="col-sm-10">
+                <select class="form-control col-20" name="mlname" id="mlname">
+                    <option value="0">请选择学科门类</option>
+                    {% for val in ml %}
+                        <option {% if yjxkData.mlname == val %} selected="selected" {% endif %} value="{{ val }}">{{ val }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="{{ id }}" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="password">一级学科名称：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.yjname, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入一级学科名称'},'id':'yjname' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">一级学科代码：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.yjnum, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入一级学科代码'},'id':'yjnum' })  }}
+            </div>
+        </div>
+        {#<div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">难度系数：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.ndxs, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入难度系数'},'id':'ndxs' })  }}
+            </div>
+        </div>#}
+
+        <span id="msg"></span>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <a onclick="save()"  class="btn btn-sm btn-primary">保存</a>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function save() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_tyjxk_edit', {'id':id}) }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://cachejs.kuakao.com/public/js/jquery-1.11.1.min.js"></script>
+    <title>关于我们-考研啦APP</title>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/pc.public.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/pc.style.css') }}">
+    <script>
+        $(function(){
+            $(".icoList .i2").hover(function(){
+                $(".ewm").show();
+            },function(){
+                $(".ewm").hide();
+            });
+
+            $(".leftBar ul a").hover(function(){
+                var index = $(".leftBar ul a").index($(this));
+                $(".leftBar ul li").removeClass("on");
+                $(this).parent().addClass("on")
+                switch (index){
+                    case 0 : $(".iBox").stop().animate({top:"5px"},300);
+                        break;
+                    case 1 : $(".iBox").stop().animate({top:"54px"},300);
+                        break;
+                    case 2 : $(".iBox").stop().animate({top:"103px"},300);
+                        break;
+                }
+                $(".infoBox").removeClass("on");
+                $(".infoBox").eq(index).addClass("on");
+            });
+
+
+
+            $(".icoBox li:eq(1) a").hover(function(){
+                $(".ewm2").show();
+            },function(){
+                $(".ewm2").hide();
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<div class="top">
+    <div class="container clearfix">
+        <a class="logo fl" href="http://app.kuakao.com">考研啦官网</a>
+        <ul class="fr">
+            <li><a href="http://app.kuakao.com">首页</a></li>
+            <li><span><img src="{{ asset('bundles/app/images/dot_05.jpg') }}" alt=""></span></li>
+            <li><a class="on" href="javascript:void(0)">关于我们</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="contactUs">
+    <div class="bg1">
+        <div class="container clearfix">
+            <div class="leftBar fl">
+                <div class="iBox clearfix">
+                    <div class="i1 fl"></div>
+                    <div class="i2 fr"></div>
+                </div>
+                <ul>
+                    <li class="on"><a href="#X">联系我们</a></li>
+                    <li><a href="#X">加入我们</a></li>
+                    <li><a href="#P">隐私保护</a></li>
+                </ul>
+            </div>
+            <div class="fl info">
+                <div class="infoBox info1 on">
+                    <h1 class="tit">联系我们</h1>
+                    <div class="textBox">
+                        <p class="lh32">公司地址：北京市海淀区中关村大街18号中关村互联网教育创新中心20层跨考教育</p>
+                        <p class="lh32">联系电话：010-0188018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;010-68542428</p>
+                        <ul class="icoBox clearfix">
+                            <li class="fl">
+                                <a href="http://shang.qq.com/wpa/qunwpa?idkey=7af4697d3b75b0b094bf67f8ae205693395ab2172ad5e59b7d99d51bbe2e7951" alt="考研啦-院校选择专家" title="一键加群" target="_blank">
+                                    <img src="{{ asset('bundles/app/images/cIco_07.jpg') }}" alt="">
+                                    <p>QQ群</p>
+                                    <span>426868903</span>
+                                </a>
+                            </li>
+                            <li class="fl">
+                                <a href="#X" title="微信扫一扫">
+                                    <img src="{{ asset('bundles/app/images/cIco_09.jpg') }}" alt="">
+                                    <p>微信公众号</p>
+                                    <span>考研择校择专业</span>
+                                </a>
+                                <img class="ewm2" src="{{ asset('bundles/app/images/ewm.png') }}" alt="">
+                            </li>
+                            <li class="fl">
+                                <a href="http://weibo.com/kuakao" target="_blank" title="考研啦官方微博">
+                                    <img src="{{ asset('bundles/app/images/cIco_11.jpg') }}" alt="">
+                                    <p>官方微博</p>
+                                    <span>@考研啦</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="infoBox info2">
+                    <h1 class="tit">加入我们</h1>
+                    <div class="textBox">
+                        <h1>app编辑</h1>
+                        <p class="lh32">1、协助产品经理完成APP各频道内容的采集、编辑、审核与发布；</p>
+                        <p class="lh32">2、参与产品的需求、开发、迭代等各个阶段工作；</p>
+                        <p class="lh32 pb20">3、协调其他部门完成本部门工作；</p>
+                        <h2>任职要求</h2>
+                        <p class="lh32">1、对移动互联网（APP）有浓厚兴趣和见解；</p>
+                        <p class="lh32">2、大专及以上学历，文科专业优先；</p>
+                        <p class="lh32">3、熟练使用Photoshop，Excel,Dreamweaver等软件；</p>
+                        <p class="lh32">4、乐观向上，善于沟通，做事不找理由、不拖沓；</p>
+                        <p class="lh32 pb20">5、有考研经历或者有在教育行业从业1年以上者优先</p>
+                        <h2>其他</h2>
+                        <p class="lh32">如果你有志在大数据、在线教育和移动互联网领域发展</p>
+                        <p class="lh32">如果你正在找办公环境宽松，领导和同事nice，发展前景好的大公司；</p>
+                        <p class="lh32 pb60">你也许就是我们要找的人，加入我们，和我们一起为150万考研学生做点事吧！</p>
+                    </div>
+                </div>
+                <div class="infoBox info3">
+                    <h1 class="tit">隐私保护</h1>
+                    <div class="textBox">
+                        <h1>【考研啦】用户协议</h1>
+                        <p class="lh32">仅供参考，协议内容包含但不限于以下信息：</p>
+                        <p class="lh32">注册使用app即视为已经阅读并同意考研啦服务协议</p>
+                        <p class="lh32">一、说明</p>
+                        <p class="lh32 pb20">考研啦APP为北京尚学硕博教育咨询有限公司独立开发并运营的客户端，旨在在考研生提供专业的择校择专业服务。</p>
+                        <p class="lh32">二、服务范围：</p>
+                        <p class="lh32 pb20">为立志考研的在校大学生或在职人员提供基于大数据的目标推荐以及目标考取难度。</p>
+                        <p class="lh32">三、用户隐私</p>
+                        <p class="lh32">我们尊重用户个人隐私，并依照中国相关法律法规对用户隐私和个人信息进行保护。</p>
+                        <p class="lh32 pb20">app中采集的个人信息用于为用户提供专业的、智能的推荐，考研啦可能会对学生进行回访，但不会因为任何商业利益将用户信息泄露给第三方</p>
+                        <p class="lh32">四、知识产权：</p>
+                        <p class="lh32">1、app内容来源于教育部及各大高校公开的数据，少部分来源于网络，如有内容侵权，及时联系我们处理</p>
+                        <p class="lh32 pb20">2、视频和专家文章为跨考教育教研老师原创，禁止转发和用于其他商业目的，否则有权根据著作权法追究当事人相关责任</p>
+                        <p class="lh32">五、责任限制：</p>
+                        <p class="lh32 pb20">考研啦app根据数据和个人情况对考生择校择专业进行推荐，仅作为考生报考的参考，不作为唯一依据，不对考生因目标选择不当造成的一切后果负责</p>
+                        <p class="lh32">六、其他</p>
+                        <p class="lh32">我们保留变更本协议条款的权利，恕不另行通知，最终解释权归我们所有</p>
+                        <p class="lh32 pb60">联系我们 kaoyanla@kuakao.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container clearfix">
+        <div class="fl">
+            <ul class="linkList clearfix">
+                <li class="fl"><a href="javascript:void(0)">加入我们</a></li>
+                <li class="fl"><span>|</span></li>
+                <li class="fl"><a href="javascript:void(0)">隐私保护</a></li>
+            </ul>
+            <p>Copyright@2004-2014 www.kuakao.com All Right Reserived 京 ICP备11041699号－3</p>
+            <p>咨询热线：400-883-2220</p>
+        </div>
+        <ul class="fr icoList clearfix">
+            <li class="fl"><a class="i1" href="http://shang.qq.com/wpa/qunwpa?idkey=7af4697d3b75b0b094bf67f8ae205693395ab2172ad5e59b7d99d51bbe2e7951" alt="考研啦-院校选择专家" title="考研啦-院校选择专家" target="_blank"></a></li>
+            <li class="fl">
+                <img class="ewm" src="{{ asset('bundles/app/images/ewm.png') }}" alt="">
+                <a class="i2" href="javascript:void(0)" title="微信扫一扫"></a>
+            </li>
+            <li class="fl"><a class="i3" href="http://weibo.com/kuakao" title="考研啦官方微博" target="_blank"></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tfeedback</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tfeedback.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ tfeedback.username }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ tfeedback.content }}</td>
+            </tr>
+            <tr>
+                <th>Addtime</th>
+                <td>{{ tfeedback.addTime }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if tfeedback.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Replycontent</th>
+                <td>{{ tfeedback.replyContent }}</td>
+            </tr>
+            <tr>
+                <th>Replytime</th>
+                <td>{{ tfeedback.replyTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('yhs_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('yhs_edit', { 'id': tfeedback.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

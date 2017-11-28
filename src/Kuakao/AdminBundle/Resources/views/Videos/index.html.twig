@@ -1,0 +1,86 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header clearfix">
+                <h1 class="col-sm-8">视频管理</h1>
+                <div class="col-sm-4 search_box">
+                    <form name="form_search" id="form_search" method="get" class="pull-right">
+                        <input type="hidden" name="page" value="{{ page }}" />
+                        <div class="input-group col-20">
+                            <input  class="form-control" type="text" name="speaker" id="speaker"  value="{{ speaker }}" />
+                            <div class="input-group-btn">
+                                <a class="btn btn-sm btn-info" onclick="submit_search();"><i class="fa fa-search" ></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="operate panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <a class="btn btn-sm btn-primary" href="{{ path('kuakao_admin_videos_add') }}">添加</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ul_table message-container ul_table_responsive">
+                <ul>
+                    <li class="thead">
+                        <div class="pull-left">
+                            <span class="col-10">ID</span>
+                            <span class="col-10 ">缩略图</span>
+                            <span class="col-10 ">播放次数</span>
+                            <span class="col-20 ">标题</span>
+                            <span class="col-10 ">主讲人</span>
+                            <span class="col-15 ">添加时间</span>
+                            <span class="col-10 ">状态</span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="col-20 ">管理</span>
+                        </div>
+                    </li>
+                    <form method="post" action="" name="form_data" id="form_data">
+                        {% for val in videosData %}
+                        <li class="tbody">
+                            <div class="pull-left">
+                                <span class="col-10">{{ val.id }}</span>
+                                {#<span class="col-10"><img width="60" src="{% if val.thumb %}{{ asset(val.thumb) }}{% else %}{{ asset('bundles/admin/img/u4.png') }}{% endif %}"></span>#}
+
+                                <span class="col-10"><img width="80" src="{{ asset(val.thumb) }}"></span>
+                                <span class="col-10">{{ val.views }}&nbsp;</span>
+                                <span class="col-20">{{ val.description }}&nbsp;</span>
+                                <span class="col-10">{{ val.speaker }}&nbsp;</span>
+                                <span class="col-15">{{ val.addTime|date('Y-m-d H:i:s') }}&nbsp;</span>
+                                <span class="col-10">{% if val.status =='1' %}启用{% else %}禁用{% endif %}</span>
+                            </div>
+                            <div class="pull-right">
+                                <span class="col-20"><a href="{{ path('kuakao_admin_videos_edit', {'id':val.id}) }}" class="btn btn-sm btn-primary">编辑</a>  <a onclick="del({{ val.id }});" class="btn btn-sm btn-danger">删除</a></span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </form>
+                    {{ knp_pagination_render(videosData) }}
+                </ul>
+            </div>
+        </div>
+    {% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function del(id) {
+        var vars = 'id='+id;
+        ui_confirm('确定要删除吗?', function() {
+            sendAjax("{{ path('kuakao_admin_videos_delete') }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        window.location.href="{{ path('kuakao_admin_videos_index') }}";
+                    });
+                } else {
+                    ui_alert(data.info, function() {});
+                }
+            });
+        });
+    }
+</script>
+{% endblock %}

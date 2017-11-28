@@ -1,0 +1,12 @@
+kuakao_admin_form_index:
+    path:     /form/
+    defaults: { _controller: "KuakaoAdminBundle:TForm:index" }
+
+kuakao_admin_form_show:
+    path:     /form/show/
+    defaults: { _controller: "KuakaoAdminBundle:TForm:show" }
+
+kuakao_admin_form_delete:
+    path:     /form/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TForm:delete" }
+

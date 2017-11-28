@@ -1,0 +1,62 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>编辑栏目</h1>
+    </div>
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+        <input type="hidden" name="ajax" id="ajax" value="1">
+        <input type="hidden" name="catid" value="{{ catid }}" />
+       {# <div class="form-group">
+            <label class="col-sm-2 control-label" for="password">用户名：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.catname, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入用户名称'},'id':'catname' })  }}
+            </div>
+        </div>#}
+        {#<div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">栏目：</label>
+            <div class="col-sm-10">
+                <select class="form-control col-30" name="parentid" id="parentid">
+                    {% for val in parentidData %}
+                        <option {% if tCategory.parentid == val.catid %} selected="selected" {% endif %} value="{{ val.catid }}">{{ val.catname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>#}
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">栏目名称：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.catname, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入栏目名称'},'id':'catname' })  }}
+            </div>
+        </div>
+
+        <span id="msg"></span>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <a onclick="save()"  class="btn btn-sm btn-primary">保存</a>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function save() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_category_edit', {'catid':catid}) }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

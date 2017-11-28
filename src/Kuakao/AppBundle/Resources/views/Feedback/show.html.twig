@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>反馈详情</title>
+    {#<title>{{ feedbackData.title }}|反馈详情</title>#}
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/style.css') }}">
+    <script>
+        document.getElementsByTagName("html")[0].style.fontSize = 100 * (document.documentElement.clientWidth /750) + 'px';
+    </script>
+</head>
+<body>
+<section class="inforBar">
+    <header>
+        <h4>反馈详情</h4>
+        {#<h4>{{ feedbackData.title }}</h4>#}
+        <p><span>{{ feedbackData.addTime|date('Y-m-d') }}</span></p>
+    </header>
+    <section class="questionList">
+        {% autoescape %}
+            {% for val in pics %}
+                <img style="width:100px;height:100px;" src="{{ asset(val) }}" />
+            {% endfor %}<br/>
+        {{ feedbackData.content|raw }}
+        {% endautoescape %}
+    </section>
+</section>
+
+</body>
+</html>

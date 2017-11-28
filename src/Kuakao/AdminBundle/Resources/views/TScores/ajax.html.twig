@@ -1,0 +1,4 @@
+<option value="0">--省份--</option>
+{% for val in sheng %}
+<option  {% if val.id == sid %} selected {% endif %}value="{{ val.id }}">{{ val.name }}</option>
+{% endfor %}

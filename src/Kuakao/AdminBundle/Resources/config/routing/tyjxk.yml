@@ -1,0 +1,19 @@
+kuakao_admin_tyjxk_index:
+    path:     /yjxk/
+    defaults: { _controller: "KuakaoAdminBundle:TYjxk:index" }
+
+kuakao_admin_tyjxk_show:
+    path:     /yjxk/show/
+    defaults: { _controller: "KuakaoAdminBundle:TYjxk:show" }
+
+kuakao_admin_tyjxk_new:
+    path:     /yjxk/add/
+    defaults: { _controller: "KuakaoAdminBundle:TYjxk:new" }
+
+kuakao_admin_tyjxk_edit:
+    path:     /yjxk/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TYjxk:edit" }
+
+kuakao_admin_tyjxk_delete:
+    path:     /yjxk/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TYjxk:delete" }

@@ -1,0 +1,19 @@
+kuakao_admin_special_index:
+    path:     /special/
+    defaults: { _controller: "KuakaoAdminBundle:TSpecial:index" }
+
+kuakao_admin_special_show:
+    path:     /special/show/
+    defaults: { _controller: "KuakaoAdminBundle:TSpecial:show" }
+
+kuakao_admin_special_new:
+    path:     /special/new/
+    defaults: { _controller: "KuakaoAdminBundle:TSpecial:new" }
+
+kuakao_admin_special_edit:
+    path:     /special/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TSpecial:edit" }
+
+kuakao_admin_special_delete:
+    path:     /special/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TSpecial:delete" }

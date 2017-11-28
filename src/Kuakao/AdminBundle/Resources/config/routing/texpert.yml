@@ -1,0 +1,19 @@
+kuakao_admin_expert_index:
+    path:     /expert/
+    defaults: { _controller: "KuakaoAdminBundle:TExpert:index" }
+
+kuakao_admin_expert_show:
+    path:     /expert/show/
+    defaults: { _controller: "KuakaoAdminBundle:TExpert:show" }
+
+kuakao_admin_expert_new:
+    path:     /expert/new/
+    defaults: { _controller: "KuakaoAdminBundle:TExpert:new" }
+
+kuakao_admin_expert_edit:
+    path:     /expert/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TExpert:edit" }
+
+kuakao_admin_expert_delete:
+    path:     /expert/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TExpert:delete" }

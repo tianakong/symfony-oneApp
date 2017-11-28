@@ -1,0 +1,20 @@
+kuakao_admin_admin_index:
+    path:     /admin/
+    defaults: { _controller: "KuakaoAdminBundle:TAdmin:index" }
+
+kuakao_admin_admin_add:
+    path:     /admin/add/
+    defaults: { _controller: "KuakaoAdminBundle:TAdmin:add" }
+
+kuakao_admin_admin_edit:
+    path:     /admin/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TAdmin:edit" }
+
+kuakao_admin_admin_delete:
+    path:     /admin/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TAdmin:delete" }
+
+
+
+
+

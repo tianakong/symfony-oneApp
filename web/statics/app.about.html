@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="/bundles/app/css/style.css" />
+    <title>考研啦</title>
+</head>
+<body>
+<div class="about">
+    <div class="container fill">
+        <p class="intro">
+            考研啦是考研行业第一款以择校择专业为主要功能的APP。考研啦致力于利用大数据和科学算法帮助考生理性报考，减少考生报考难度，减少考研失败的风险。<br>考研啦是国内唯一上市考研机构跨考教育[股票代码：002325]旗下产品，依托11年考研行业培训经验，400位全职老师、上万名成功学员，为考研学生提供专业的、免费的择校择专业指导。<br>
+            我们的遵旨是：数据让考研决策更科学[002325]
+        </p>
+        <div class="linkContainer clearfix">
+            <div class="sina fl clearfix Link">
+                <img class="fl" src="/bundles/app/images/sina.png" alt="跨考考研" />
+                <span class="fl">微博：<a href="#X">跨考考研</a></span>
+
+            </div>
+            <div class="wx fl Link clearfix">
+                <img class="fl" src="/bundles/app/images/wxLogo.png" alt="kkkyan" />
+                <span class="fl">微信：<a href="#X">kkkyan</a></span>
+            </div>
+        </div>
+        <img class="wxImg" src="/bundles/app/images/wxImg.png" />
+        <h4 class="share">分享给同学</h4>
+    </div>
+</div>
+</body>
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</html>

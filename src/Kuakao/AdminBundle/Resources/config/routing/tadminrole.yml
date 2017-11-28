@@ -1,0 +1,20 @@
+kuakao_admin_adminrole_index:
+    path:     /adminrole/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRole:index" }
+
+kuakao_admin_adminrole_add:
+    path:     /adminrole/add/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRole:add" }
+
+kuakao_admin_adminrole_read:
+    path:     /adminrole/read/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRole:read" }
+
+kuakao_admin_adminrole_edit:
+    path:     /adminrole/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRole:edit" }
+
+kuakao_admin_adminrole_delete:
+    path:     /adminrole/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRole:delete" }
+

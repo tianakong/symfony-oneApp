@@ -1,0 +1,217 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header">
+                <h1>编辑分数线</h1>
+            </div>
+            {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+            <input type="hidden" name="ajax" id="ajax" value="1">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">年份：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.year, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入年份'},'id':'year' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">意向学校：</label>
+                <div class="col-sm-10">
+                    <select class="form-control col-30 " name="area" id="area">
+                        <option value="">--分区--</option>
+                        <option {% if area.zone == '1' %} selected="selected" {% endif %} value="1">一区</option>
+                        <option {% if area.zone == '2' %} selected="selected" {% endif %} value="2">二区</option>
+                    </select><br>
+                    <select class="form-control col-30 " name="sheng" id="sheng">
+                        <option value="{{ scores.shengId }}">{{ area.name }}</option>
+                    </select><br>
+                    <select class="form-control col-30 " name="school" id="school">
+                        <option value="{{ scores.schoolId }}">{{ school.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">意向专业：</label>
+                <div class="col-sm-10">
+                    <select class="form-control col-30 " name="xkml" id="xkml">
+                        <option value="0">--学科门类--</option>
+                        {% for val in xkml %}
+                            <option {% if val == major.xkml %} selected="selected" {% endif %}>{{ val }}</option>
+                        {% endfor %}
+                    </select><br>
+                    <select class="form-control col-30 " name="yjxk" id="yjxk">
+                        <option>{{ major.yjxk }}</option>
+
+                    </select><br>
+                    <select class="form-control col-30 " name="major" id="major">
+                        <option value="{{ scores.majorId }}">{{ major.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+
+            {#<div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">预测分数线：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.forecastScore, {'attr': {'class':'form-control col-30'},'id':'forecastScore' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">招生人数：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.recruitNum, {'attr': {'class':'form-control col-30'},'id':'recruitNum' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">推免人数：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.pushAvoidNum, {'attr': {'class':'form-control col-30'},'id':'pushAvoidNum' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">录取人数：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.enrollNum, {'attr': {'class':'form-control col-30'},'id':'enrollNum' })  }}
+                </div>
+            </div>#}
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">政治：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.political, {'attr': {'class':'form-control col-30'},'id':'political' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">英语：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.english, {'attr': {'class':'form-control col-30'},'id':'english' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">业务课一：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.profes1, {'attr': {'class':'form-control col-30'},'id':'profes1' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">业务课二：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.profes2, {'attr': {'class':'form-control col-30'},'id':'profes2' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="list_rows">总分：</label>
+                <div class="col-sm-10">
+                    {{ form_widget( form.totalScore, {'attr': {'class':'form-control col-30'},'id':'totalScore' })  }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <a onclick="save()"  class="btn btn-sm btn-primary">修改</a>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    {% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script>
+        function save() {
+            if (check_form("form_data")) {
+                var vars = $("#form_data").serialize();
+                sendAjax("{{ path('kuakao_admin_scores_edit', {'id':id}) }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            window.location.href='{{ path('kuakao_admin_scores_index')}}';
+                            myclose();
+                        });
+                    } else {
+                        ui_error(data.info);
+                    }
+                });
+            }
+        }
+        $(function(){
+            {#var zone = $("#area").val();#}
+            {#Ajax("{{ path('kuakao_admin_scores_ajax',{'sid':scores.shengId}) }}",{'zone':zone},function(row){$("#sheng").html(row)});#}
+            {#var proid = $("#sheng").val();#}
+            {#Ajax("{{ path('kuakao_admin_scores_ajax2',{'cid':scores.schoolId}) }}",{'proid':proid},function(row){$("#school").html(row)});#}
+
+
+
+            {#Ajax("{{ path('kuakao_admin_scores_ajaxxkml') }}",function(row){$("#xkml").html(row)});#}
+            {#var mlname = $("#xkml").val();#}
+            {#Ajax("{{ path('kuakao_admin_scores_ajaxyjxk') }}",{'yjnum':major.yjxknum},function(row){$("#yjxk").html(row)});#}
+            {#var yjxk = $("#yjxk").val();#}
+            {#Ajax("{{ path('kuakao_admin_scores_ajaxmajor') }}",{'yjxk':yjxk},function(row){$("#major").html(row)});#}
+            {#//    获取学科门类#}
+            {#$.ajax({#}
+                {#type:"GET",#}
+                {#url:"{{ path('kuakao_admin_scores_ajaxxkml') }}",#}
+                {#success:function(row) {#}
+                    {#$("#xkml").html(row);#}
+                {#}#}
+            {#});#}
+        });
+        //    获取省份
+        $('#area').change(function(){
+            var zone = $("#area").val();
+            $.ajax({
+                type:"GET",
+                url:"{{ path('kuakao_admin_scores_ajax',{'cid':scores.schoolId}) }}",
+                data:{'zone':zone},
+                success:function(row){
+                    $("#sheng").html(row);
+                }
+            });
+        });
+        //    获取学校
+        $('#sheng').change(function(){
+            var proid = $("#sheng").val();
+            $.ajax({
+                type:"GET",
+                url:"{{ path('kuakao_admin_scores_ajax2') }}",
+                data:{'proid':proid},
+                success:function(row){
+                    $("#school").html(row);
+                }
+            });
+        });
+        //    获取一级学科
+        $('#xkml').change(function(){
+            var mlname = $("#xkml").val();
+            $.ajax({
+                type:"GET",
+                url:"{{ path('kuakao_admin_scores_ajaxyjxk') }}",
+                data:{'mlname':mlname},
+                success:function(row){
+                    $("#yjxk").html(row);
+                }
+            });
+        });
+
+        //    获取专业名称
+        $('#yjxk').change(function(){
+            var yjxk = $("#yjxk").val();
+            $.ajax({
+                type:"GET",
+                url:"{{ path('kuakao_admin_scores_ajaxmajor') }}",
+                data:{'yjxk':yjxk},
+                success:function(row){
+                    $("#major").html(row);
+                }
+            });
+        });
+
+        function Ajax(url,param,callback){
+            $.ajax({
+                type:"GET",
+                url:url,
+                async:false,
+                data:param,
+                dataType:'html',
+                success:callback,
+            });
+        }
+    </script>
+{% endblock %}

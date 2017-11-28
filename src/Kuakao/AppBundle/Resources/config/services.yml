@@ -1,0 +1,4 @@
+services:
+#    kuakao_app.example:
+#        class: Kuakao\AppBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

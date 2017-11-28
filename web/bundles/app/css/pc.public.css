@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th,td {margin: 0;padding: 0;}
+ul{ list-style:none;}
+body, button, input, select, textarea {color: #333333;}
+body, button, input, select, textarea { font:12px/1.5 tahoma,"microsoft yahei","\5FAE\8F6F\96C5\9ED1"}
+a{ text-decoration:none; outline:none;}
+img{ border:none;}
+.clearfix { zoom:1;}
+.clearfix:after { content:".";display:block;height:0;clear:both; visibility:hidden;}
+.fl{float:left; display:inline;}
+.fr{float:right; display:inline;}
+.container { width:1200px; margin:0 auto;}
+.container:before { display: table; content:""; height: 0;visibility: hidden;}
+.container:after { display: table; content:""; height: 0;visibility: hidden;}
+
+.pr5{ padding-right:5px;}
+.pr10{ padding-right:10px;}
+.pr15{ padding-right:15px;}
+.pr20{ padding-right:20px;}
+.pr25{ padding-right:25px;}
+.pr30{ padding-right:30px;}
+
+.pl30 { padding-left:30px;}
+.pl5{ padding-left:5px;}
+.pl10{ padding-left:10px;}
+.pl15{ padding-left:15px;}
+.pl20{ padding-left:20px;}
+.pl25{ padding-left:25px;}
+.pl40{ padding-left:40px;}
+
+.pt5{ padding-top:5px;}
+.pt7{ padding-top:7px;}
+.pt10{ padding-top:10px;}
+.pt15{ padding-top:15px;}
+.pt20{ padding-top:20px;}
+.pt25{ padding-top:25px;}
+.pt30{ padding-top:30px;}
+.pt35{ padding-top:35px;}
+
+.pb5{ padding-bottom:5px;}
+.pb8{ padding-bottom:8px;}
+.pb10{ padding-bottom:10px;}
+.pb15{ padding-bottom:15px;}
+.pb20{ padding-bottom:20px;}
+.pb30{ padding-bottom:30px;}
+.pb40{ padding-bottom:40px;}
+
+.mr5{ margin-right:5px;}
+.mr10{ margin-right:10px;}
+.mr15{ margin-right:15px;}
+.mr20{ margin-right:20px;}
+
+.ml5{ margin-left:5px;}
+.ml10{ margin-left:10px;}
+.ml12{ margin-left:12px}
+.ml15{ margin-left:15px;}
+.ml20{ margin-left:20px;}
+.ml27{ margin-left:27px}
+.ml90{ margin-left:90px;}
+
+.mt5{ margin-top:5px;}
+.mt10{ margin-top:10px;}
+.mt15{ margin-top:15px;}
+.mt20{ margin-top:20px;}
+.mt25{ margin-top:25px;}
+.mt30{ margin-top:30px;}
+.mt50{ margin-top:50px;}
+
+.mb5{ margin-bottom:5px;}
+.mb10{ margin-bottom:10px;}
+.mb15{ margin-bottom:15px;}
+.mb20{ margin-bottom:20px;}
+.mb30{ margin-bottom:30px;}
+.mb40{ margin-bottom:40px;}
+

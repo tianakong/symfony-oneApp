@@ -1,0 +1,20 @@
+kuakao_admin_majorschool_index:
+    path:     /majorschool/
+    defaults: { _controller: "KuakaoAdminBundle:TMajorSchool:index" }
+
+kuakao_admin_majorschool_delete:
+    path:     /majorschool/delete
+    defaults: { _controller: "KuakaoAdminBundle:TMajorSchool:delete" }
+
+
+kuakao_admin_majorschool_edit:
+    path:     /majorschool/edit
+    defaults: { _controller: "KuakaoAdminBundle:TMajorSchool:edit" }
+
+kuakao_admin_majorschool_xiufu:
+    path:     /majorschool/xiufu
+    defaults: { _controller: "KuakaoAdminBundle:TMajorSchool:xiufu" }
+
+
+
+

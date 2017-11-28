@@ -1,0 +1,12 @@
+kuakao_admin_tnews_index:
+    path:     /test1
+    defaults: { _controller: "KuakaoAdminBundle:TNews:index" }
+    methods:  GET
+
+tnews_show:
+    path:     /{id}/show
+    defaults: { _controller: "KuakaoAdminBundle:TNews:show" }
+    methods:  GET
+
+
+

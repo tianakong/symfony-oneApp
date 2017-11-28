@@ -1,0 +1,67 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block topMenu %}{% endblock %}
+{% block leftMenu %}{% endblock %}
+{% block cur %}{% endblock %}
+{% block body %}
+    {% autoescape %}
+
+        <div class="wrapper wrapper-content" >
+
+            <div class="page-header clearfix">
+                <h1 class="col-sm-8">学校列表</h1>
+                <div class="col-sm-4 search_box">
+                    <form name="form_search" id="form_search" method="get" class="pull-right">
+                        <div class="input-group col-20">
+                            <input  class="form-control" type="text" name="school_name" id="school_name"/>
+                            <div class="input-group-btn">
+                                <a class="btn btn-sm btn-info" onclick="submit_search();"><i class="fa fa-search" ></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="ul_table">
+
+                <ul>
+                    <li class="thead" >
+                        <div class="pull-left">
+                            <span class="col-10">选择</span>
+                            <span class="col-20">ID</span>
+                            <span class="col-20 ">学校名称</span>
+                        </div>
+                    </li>
+                    <form method="post" action="" name="form_data" id="form_data">
+                        {% for val in schoolData %}
+                        <li class="tbody">
+                            <div class="pull-left">
+                                <span class="col-10"><input type="checkbox" value="{{ val.id }}" name="box" id="ids"></span>
+                                <span class="col-20">{{ val.id }}</span>
+                                <span class="col-20">{{ val.name }}</span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </form>
+                    {{ knp_pagination_render(schoolData) }}
+                </ul>
+            </div>
+            <div class="pull-right">
+                <a onclick="save_data();" class="btn btn-sm btn-primary">确定</a>
+                <a onclick="myclose();" class="btn btn-sm btn-default">关闭</a>
+            </div>
+        </div>
+    {% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script>
+        function save_data() {
+            var obj = document.getElementsByName("box");
+            var check_val = [];
+           for(k in obj){
+                if(obj[k].checked)
+                    check_val.push(obj[k].value);
+            }
+            $('#schoolIds',  parent.document).val(check_val);
+            myclose();
+        }
+    </script>
+{% endblock %}

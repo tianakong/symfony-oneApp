@@ -1,0 +1,11 @@
+kuakao_admin_feedback_index:
+    path:     /feedback/
+    defaults: { _controller: "KuakaoAdminBundle:Tfeedback:index" }
+
+kuakao_admin_feedback_edit:
+    path:     /feedback/edit
+    defaults: { _controller: "KuakaoAdminBundle:Tfeedback:edit" }
+
+kuakao_admin_feedback_delete:
+    path:     /feedback/delete
+    defaults: { _controller: "KuakaoAdminBundle:Tfeedback:delete" }

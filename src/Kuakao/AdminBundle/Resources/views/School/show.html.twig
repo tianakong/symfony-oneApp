@@ -1,0 +1,173 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header">
+                <h1>院校详情</h1>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">院校名：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.name }}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">学校logo：</label>
+                    <div class="col-sm-10  col-md-3">
+                        <a href="#" class="thumbnail">
+                            <img src="{{ tSchool.logo }}" class="img-thumbnail">
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">院校banner：</label>
+                    <div class="col-sm-10  col-md-3">
+                        <a href="#" class="thumbnail">
+                            <img src="{{ tSchool.pic }}" class="img-thumbnail">
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">学校简介：</label>
+                    <div class="col-sm-10">
+                        <p>{{ tSchool.about|raw }}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">学校类别：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ school_type[tSchool.schoolType] }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">学校隶属：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ school_type[tSchool.comesUnder] }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">综合排名：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.rank }}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">关注人数：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.gzrs }}" disabled>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">所属省份：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ area[tSchool.province].name }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">学校属性：</label>
+                    <div class="col-sm-10">
+                        <div class="checkbox">
+                            {% if tSchool.is211 == '1' %}
+                            <label>
+                                <input type="checkbox" checked>211
+                            </label>
+                            {% endif %}
+                            {% if tSchool.is985 == '1' %}
+                            <label>
+                                <input type="checkbox" checked>985
+                            </label>
+                            {% endif %}
+                            {% if tSchool.isZhx == '1' %}
+                            <label>
+                                <input type="checkbox" checked>自划线
+                            </label>
+                            {% endif %}
+                            {% if tSchool.isYjs == '1' %}
+                            <label>
+                                <input type="checkbox" checked>研究生院
+                            </label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">办学层次：</label>
+                    <div class="col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="form_schoolLevel" name="form[schoolLevel][bksy]" value="1" {% if tSchool.schoolLevel == 1 or tSchool.schoolLevel == 3 %}checked{% endif %}>本科生院
+                            </label>
+                            <label>
+                                <input type="checkbox" id="form_schoolLevel" name="form[schoolLevel][yjsy]" value="2" {% if tSchool.schoolLevel == 2 or tSchool.schoolLevel == 3 %}checked{% endif %}>研究生院
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">难度系数：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.ndxs }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">毕业生分布top5地区：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.areaTop }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">毕业生分布top5行业：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.tradeTop }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">平均薪酬：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.averageWage }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">就业率：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.jyl }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">博士点：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.doctor }}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">硕士点：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.master }}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="list_rows">重点学科：</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ tSchool.keySubjects }}" disabled>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    {% endautoescape %}
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>会员详情</h1>
+    </div>
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+        <input type="hidden" name="ajax" id="ajax" value="1">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="password">姓名：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.name, {'attr': {'class':'form-control col-30','check':'require', 'msg':'请输入用户姓名'},'id':'name','disabled':'disabled' })  }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">联系电话：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.mobile, {'attr': {'class':'form-control col-30','check':'require', 'msg':'请输入联系电话'},'id':'mobile','disabled':'disabled'})  }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">专业：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="major" id="major" value="{{ memberData.major }}" disabled/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">学校：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="school" id="school" value="{{ memberData.school }}" disabled />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">考研年份：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="year" id="year" value="{{ memberData.year }}" disabled/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">目标专业：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="targetMajor" id="targetMajor" value="{{ memberData.targetMajor }}" disabled />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">目标学校：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="targetSchool" id="targetSchool" value="{{ memberData.targetSchool }}" disabled />
+        </div>
+    </div>
+    {#<div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">四六级成绩：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="score" id="score" value="{{ memberData.score46 }}" disabled/>
+        </div>
+    </div>#}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">本科成绩：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="scoreBa" id="scoreBa" value="{{ memberData.scoreBa }}" disabled />
+        </div>
+    </div>
+  {#  <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">头像地址：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="img" id="img" value="{{ memberData.img }}" disabled />
+        </div>
+    </div>#}
+   {# <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">性别：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="sex" id="sex" value="{{ memberData.sex }}" disabled />
+        </div>
+    </div>#}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">数学成绩：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="sxcj" id="sxcj" value="{{ memberData.sxcj }}" disabled/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">英语成绩：</label>
+        <div class="col-sm-10">
+            <input class="form-control col-30" type="text" name="yycj" id="yycj" value="{{ memberData.yycj }}" disabled />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">会员类型：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.type, {'attr': {'class':'form-control col-30'},'id':'type','disabled':'disabled'}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">状态：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.status, {'attr': {'class':'form-control col-30'},'id':'status','disabled':'disabled'}) }}
+        </div>
+    </div>
+    <span id="msg"></span>
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <a onclick="history.go(-1)"  class="btn btn-sm btn-primary">返回</a>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script>
+        function save() {
+            if (check_form("form_data")) {
+                var vars = $("#form_data").serialize();
+                sendAjax("{{ path('kuakao_admin_member_edit', {'id':id}) }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            window.location.href='{{ path('kuakao_admin_member_index')}}';
+                            myclose();
+                        });
+                    } else {
+                        ui_error(data.info);
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

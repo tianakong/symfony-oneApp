@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tfeedback list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Content</th>
+                <th>Addtime</th>
+                <th>Status</th>
+                <th>Replycontent</th>
+                <th>Replytime</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tfeedback in tfeedbacks %}
+            <tr>
+                <td><a href="{{ path('yhs_show', { 'id': tfeedback.id }) }}">{{ tfeedback.id }}</a></td>
+                <td>{{ tfeedback.username }}</td>
+                <td>{{ tfeedback.content }}</td>
+                <td>{{ tfeedback.addTime }}</td>
+                <td>{% if tfeedback.status %}Yes{% else %}No{% endif %}</td>
+                <td>{{ tfeedback.replyContent }}</td>
+                <td>{{ tfeedback.replyTime }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('yhs_show', { 'id': tfeedback.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('yhs_edit', { 'id': tfeedback.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('yhs_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

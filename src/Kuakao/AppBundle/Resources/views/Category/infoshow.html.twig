@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ categoryinfo.title }}|咨询详情</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/style.css') }}">
+    <script>
+        document.getElementsByTagName("html")[0].style.fontSize = 100 * (document.documentElement.clientWidth /750) + 'px';
+    </script>
+</head>
+<body>
+<section class="inforBar">
+    <header>
+        <h4>{{ categoryinfo.title }}</h4>
+        <p><span>{{ categoryinfo.inputtime|date('Y-m-d') }}</span><span>{{ category.catname }}</span><span>阅读30000+</span></p>
+    </header>
+    <section class="questionList">
+        {% autoescape %}
+     {{ categoryinfo.content|raw }}
+        {% endautoescape %}
+    </section>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="http://cachecss.kuakao.com/jixun/public/css/public.css" />
+    <link rel="stylesheet" href="/bundles/app/css/style.css" >
+</head>
+<body>
+    <div class="learnMore">
+        <div class="learnMoreInfo">
+            <h1>你知道吗？</h1>
+            <ul>
+                <li>考研目标的选择直接决定考研成败甚至将来的职业</li>
+                <li>每年考研失败的人中，有72%因为考研目标选择过</li>
+                <li>考研的路有很多，不要选择那条最艰辛的...</li>
+            </ul>
+        </div>
+        <div class="learnMoreInfo">
+            <h1>在这里你可以得到</h1>
+            <ul>
+                <li>根据个人情况智能推荐的学校或专业</li>
+                <li>目标学校和专业近3年报考数据</li>
+                <li>独家考研成功学员经验和考研专家免费问答</li>
+            </ul>
+        </div>
+        <div class="learnMoreInfo">
+            <h1>为什么选择我们</h1>
+            <img src="/bundles/app/images/why_06.jpg" alt="">
+        </div>
+        <div class="learnMoreInfo2">
+            <h1>我们的小成绩</h1>
+            <p><span>11</span>年来，<span>247040</span>名考生考取名校</p>
+            <p><span>60%</span>其中跨校跨专业考生占60%以上</p>
+        </div>
+    </div>
+
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</body>
+</html>

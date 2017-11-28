@@ -1,0 +1,331 @@
+kuakao_app_default_register:
+    path:     /register
+    defaults: { _controller: KuakaoAppBundle:Default:register }
+
+kuakao_app_default_sendInfo:
+    path:     /sendinfo
+    defaults: { _controller: KuakaoAppBundle:Default:sendInfo }
+
+kuakao_app_default_login:
+    path:     /login
+    defaults: { _controller: KuakaoAppBundle:Default:login }
+
+kuakao_app_default_infoLogin:
+    path:     /infologin
+    defaults: { _controller: KuakaoAppBundle:Default:infoLogin }
+kuakao_app_default_index:
+    path:     /
+    defaults: { _controller: KuakaoAppBundle:Default:index }
+
+kuakao_app_default_aboutus:
+    path:     /aboutus
+    defaults: { _controller: KuakaoAppBundle:Default:aboutUs }
+
+
+
+kuakao_app_zyd_add:
+    path:     /zydadd
+    defaults: { _controller: KuakaoAppBundle:Zyd:add }
+kuakao_app_zyd_remove:
+    path:     /zydremove
+    defaults: { _controller: KuakaoAppBundle:Zyd:delete }
+kuakao_app_zyd_index:
+    path:     /zyd
+    defaults: { _controller: KuakaoAppBundle:Zyd:index }
+
+
+kuakao_app_school_year:
+    path:     /getyear
+    defaults: { _controller: KuakaoAppBundle:School:year }
+
+kuakao_app_school_education:
+    path:     /geteducation
+    defaults: { _controller: KuakaoAppBundle:School:education }
+
+kuakao_app_school_sxsp:
+    path:     /getsxsp
+    defaults: { _controller: KuakaoAppBundle:School:sxsp }
+
+kuakao_app_school_yycj:
+    path:     /getyycj
+    defaults: { _controller: KuakaoAppBundle:School:yycj }
+
+kuakao_app_school_areaSchool:
+    path:     /areaschool
+    defaults: { _controller: KuakaoAppBundle:School:getAreaSchool }
+
+kuakao_app_school_school:
+    path:     /getschool
+    defaults: { _controller: KuakaoAppBundle:School:school }
+
+kuakao_app_school_getareazone:
+    path:     /getareazone
+    defaults: { _controller: KuakaoAppBundle:School:getAreaZone }
+
+kuakao_app_school_area:
+    path:     /getarea
+    defaults: { _controller: KuakaoAppBundle:School:area }
+kuakao_app_school_type:
+    path:     /schooltype
+    defaults: { _controller: KuakaoAppBundle:School:type }
+kuakao_app_school_show:
+    path:     /schoolshow
+    defaults: { _controller: KuakaoAppBundle:School:show }
+
+
+kuakao_app_default_showpage:
+    path:     /schoolshowpage
+    defaults: { _controller: KuakaoAppBundle:Default:showPage }
+
+kuakao_app_default_majorshowpage:
+    path:     /majorshowpage
+    defaults: { _controller: KuakaoAppBundle:Default:MajorshowPage }
+
+kuakao_app_default_infoshowpage:
+    path:     /infoshowpage
+    defaults: { _controller: KuakaoAppBundle:Default:infoshowPage }
+
+kuakao_app_default_expertshowpage:
+    path:     /expertshowpage
+    defaults: { _controller: KuakaoAppBundle:Default:ExpertshowPage }
+
+kuakao_app_default_playshowpage:
+    path:     /playshowpage
+    defaults: { _controller: KuakaoAppBundle:Default:playShowPage }
+
+kuakao_app_default_specialshowpage:
+    path:     /specialshowpage
+    defaults: { _controller: KuakaoAppBundle:Default:specialshowPage }
+
+kuakao_app_default_feedbackshowpage:
+    path:     /feedbackshowpage
+    defaults: { _controller: KuakaoAppBundle:Default:feedbackshowPage }
+
+
+
+kuakao_app_major_major:
+    path:     /getmajor
+    defaults: { _controller: KuakaoAppBundle:Major:major }
+
+kuakao_app_major_menlei:
+    path:     /getml
+    defaults: { _controller: KuakaoAppBundle:Major:menlei }
+
+kuakao_app_major_yjxk:
+    path:     /getyjxk
+    defaults: { _controller: KuakaoAppBundle:Major:yjxk }
+
+kuakao_app_major_kstype:
+    path:     /getkstype
+    defaults: { _controller: KuakaoAppBundle:Major:kstype }
+
+kuakao_app_major_show:
+    path:     /majorshow
+    defaults: { _controller: KuakaoAppBundle:Major:show }
+
+kuakao_app_major_follow:
+    path:     /follow
+    defaults: { _controller: KuakaoAppBundle:Major:follow }
+kuakao_app_major_cancelFollow:
+    path:     /cancelfollow
+    defaults: { _controller: KuakaoAppBundle:Major:cancelFollow }
+
+kuakao_app_major_myfollow:
+    path:     /myfollow
+    defaults: { _controller: KuakaoAppBundle:Major:myFollow }
+
+
+kuakao_app_member_restpasswd1:
+    path:     /restpasswd1
+    defaults: { _controller: KuakaoAppBundle:Member:restPasswd1 }
+
+kuakao_app_member_restpasswd2:
+    path:     /restpasswd2
+    defaults: { _controller: KuakaoAppBundle:Member:restPasswd2 }
+
+kuakao_app_compute_result:
+    path:     /compute
+    defaults: { _controller: KuakaoAppBundle:Compute:result }
+kuakao_app_compute_evaluation:
+    path:     /evaluation
+    defaults: { _controller: KuakaoAppBundle:Compute:evaluation }
+
+kuakao_app_search_index:
+    path:     /search
+    defaults: { _controller: KuakaoAppBundle:Search:index }
+kuakao_app_search_keyword:
+    path:     /searchkeyword
+    defaults: { _controller: KuakaoAppBundle:Search:keywords }
+kuakao_app_search_hotkeyword:
+    path:     /hotkeyword
+    defaults: { _controller: KuakaoAppBundle:Search:hotKeyword }
+
+kuakao_app_videos_list:
+    path:     /videolist
+    defaults: { _controller: KuakaoAppBundle:Videos:list }
+
+kuakao_app_videos_collect:
+    path:     /collect
+    defaults: { _controller: KuakaoAppBundle:Videos:collect }
+
+kuakao_app_videos_play:
+    path:     /play
+    defaults: { _controller: KuakaoAppBundle:Videos:play }
+
+kuakao_app_feedback_add:
+    path:     /add
+    defaults: { _controller: KuakaoAppBundle:Feedback:add }
+
+kuakao_app_feedback_myfeedback:
+    path:     /myfeedback
+    defaults: { _controller: KuakaoAppBundle:Feedback:myFeedback }
+
+kuakao_app_feedback_categoryinfo:
+    path:     /categoryinfo
+    defaults: { _controller: KuakaoAppBundle:Feedback:categoryInfo }
+
+kuakao_app_grade_addgrade:
+    path:     /addgrade
+    defaults: { _controller: KuakaoAppBundle:Grade:addgrade }
+
+kuakao_app_member_myinfo:
+    path:     /myinfo
+    defaults: { _controller: KuakaoAppBundle:Member:myinfo }
+
+kuakao_app_member_findmy:
+    path:     /findmy
+    defaults: { _controller: KuakaoAppBundle:Member:findmy }
+
+kuakao_app_category_kyfllist:
+    path:     /kyfllist
+    defaults: { _controller: KuakaoAppBundle:Category:kyflList }
+
+kuakao_app_category_glrslist:
+    path:     /glrslist
+    defaults: { _controller: KuakaoAppBundle:Category:glrsList }
+
+kuakao_app_category_zjslist:
+    path:     /zjslist
+    defaults: { _controller: KuakaoAppBundle:Category:zjsList }
+
+kuakao_app_category_categorydetail:
+    path:     /categorydetail
+    defaults: { _controller: KuakaoAppBundle:Category:categoryDetail }
+
+kuakao_app_category_expert:
+    path:     /expert
+    defaults: { _controller: KuakaoAppBundle:Category:expert }
+
+kuakao_app_category_testtime:
+    path:     /testtime
+    defaults: { _controller: KuakaoAppBundle:Category:testTime }
+
+kuakao_app_quiz_quiztopic:
+    path:     /quiztopic
+    defaults: { _controller: KuakaoAppBundle:Quiz:quizTopic }
+
+kuakao_app_quiz_quiztopicoption:
+    path:     /quiztopicoption
+    defaults: { _controller: KuakaoAppBundle:Quiz:quizTopicOption }
+
+kuakao_app_quiz_quizanswer:
+    path:     /quizanswer
+    defaults: { _controller: KuakaoAppBundle:Quiz:quizAnswer }
+
+kuakao_app_member_zhiyuan:
+    path:     /zhiyuan
+    defaults: { _controller: KuakaoAppBundle:Member:zhiyuan }
+
+kuakao_app_default_clause:
+    path:     /clause
+    defaults: { _controller: KuakaoAppBundle:Default:clause }
+
+kuakao_app_default_know:
+    path:     /know
+    defaults: { _controller: KuakaoAppBundle:Default:know }
+
+kuakao_app_default_state:
+    path:     /state
+    defaults: { _controller: KuakaoAppBundle:Default:state }
+
+kuakao_app_default_page:
+    path:     /page
+    defaults: { _controller: KuakaoAppBundle:Default:page }
+#
+#kuakao_app_category_showpage:
+#    path:     /expertshowpage
+#    defaults: { _controller: KuakaoAppBundle:Category:showPage }
+#
+#kuakao_app_category_infoshowpage:
+#    path:     /infoshowpage
+#    defaults: { _controller: KuakaoAppBundle:Category:infoshowPage }
+
+
+kuakao_app_grade_findgrade:
+    path:     /findgrade
+    defaults: { _controller: KuakaoAppBundle:Grade:findgrade }
+
+kuakao_app_grade_sortgrade:
+    path:     /sortgrade
+    defaults: { _controller: KuakaoAppBundle:Grade:sortgrade }
+
+kuakao_app_quiz_quiz:
+    path:     /quiz
+    defaults: { _controller: KuakaoAppBundle:Quiz:quiz }
+
+kuakao_app_category_categorylist:
+    path:     /categorylist
+    defaults: { _controller: KuakaoAppBundle:Category:categoryList }
+
+kuakao_app_feedback_helplist:
+    path:     /helplist
+    defaults: { _controller: KuakaoAppBundle:Feedback:helpList }
+
+#kuakao_app_videos_playshowpage:
+#    path:     /playshowpage
+#    defaults: { _controller: KuakaoAppBundle:Videos:playShowPage }
+
+kuakao_app_category_kyflshow:
+    path:     /kyflshow
+    defaults: { _controller: KuakaoAppBundle:Category:kyflShow }
+
+kuakao_app_category_form:
+    path:     /form
+    defaults: { _controller: KuakaoAppBundle:Category:form }
+
+kuakao_app_category_yxzxlist:
+    path:     /yxzxlist
+    defaults: { _controller: KuakaoAppBundle:Category:yxzxList }
+
+kuakao_app_category_toplist:
+    path:     /toplist
+    defaults: { _controller: KuakaoAppBundle:Category:topList }
+
+kuakao_app_addscores_add:
+    path:     /addscores
+    defaults: { _controller: KuakaoAppBundle:AddScores:add }
+
+kuakao_app_addscores_maxmin:
+    path:     /maxmin
+    defaults: { _controller: KuakaoAppBundle:AddScores:maxMin }
+
+kuakao_app_addscores_sortscores:
+    path:     /sortscores
+    defaults: { _controller: KuakaoAppBundle:AddScores:sortScores }
+
+
+kuakao_app_major_getxkmlyjxk:
+    path:     /getxkmlyjxk
+    defaults: { _controller: KuakaoAppBundle:Major:getXkmlYjxk }
+
+kuakao_app_major_getxkmlyjxkmajor:
+    path:     /getxkmlyjxkmajor
+    defaults: { _controller: KuakaoAppBundle:Major:getXkmlYjxkMajor }
+
+kuakao_app_special_speciallist:
+    path:     /speciallist
+    defaults: { _controller: KuakaoAppBundle:Special:specialList }
+
+#kuakao_app_special_specialshowpage:
+#    path:     /specialshowpage
+#    defaults: { _controller: KuakaoAppBundle:Special:specialshowPage }

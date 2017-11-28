@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TQuizAnswer</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Answerid</th>
+                <td>{{ tQuizAnswer.answerid }}</td>
+            </tr>
+            <tr>
+                <th>Quizid</th>
+                <td>{{ tQuizAnswer.quizid }}</td>
+            </tr>
+            <tr>
+                <th>Minscore</th>
+                <td>{{ tQuizAnswer.minScore }}</td>
+            </tr>
+            <tr>
+                <th>Maxscore</th>
+                <td>{{ tQuizAnswer.maxScore }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ tQuizAnswer.content }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tquizanswer_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

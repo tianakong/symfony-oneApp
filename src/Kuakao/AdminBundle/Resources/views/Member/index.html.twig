@@ -1,0 +1,85 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header clearfix">
+                <h1 class="col-sm-8">搜索</h1>
+                <div class="col-sm-4 search_box">
+                    <form name="form_search" id="form_search" method="get" class="pull-right">
+                        <input type="hidden" name="page" value="{{ page }}" />
+                        <div class="input-group col-20">
+                            <input  class="form-control" type="text" name="name" id="name"  value="{{ name }}" />
+                            <div class="input-group-btn">
+                                <a class="btn btn-sm btn-info" onclick="submit_search();"><i class="fa fa-search" ></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="operate panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <a class="btn btn-sm btn-primary" href="{{ path('kuakao_admin_member_add') }}">添加</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ul_table message-container ul_table_responsive">
+                <ul>
+                    <li class="thead">
+                        <div class="pull-left">
+                            <span class="col-8">ID</span>
+                            <span class="col-15 ">用户名</span>
+                            <span class="col-15 ">手机号码</span>
+                            <span class="col-10 ">状态</span>
+                            <span class="col-15 ">注册时间</span>
+                            <span class="col-15">最后登录时间</span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="col-20 ">管理</span>
+                        </div>
+                    </li>
+                    <form method="post" action="" name="form_data" id="form_data">
+                        {% for val in memberData %}
+                        <li class="tbody">
+                            <div class="pull-left">
+                                <span class="col-8">{{ val.id }}</span>
+                                <span class="col-15">{{ val.name }}</span>
+                                <span class="col-15">{{ val.mobile }}&nbsp;</span>
+                                <span class="col-10">{% if val.status =='1' %}启用{% else %}禁用{% endif %}&nbsp;</span>
+                                <span class="col-15">{{ val.addTime|date('Y-m-d H:i:s') }}&nbsp;</span>
+                                <span class="col-15">{{ val.lastLoginTime|date('Y-m-d H:i:s') }}&nbsp;</span>
+                            </div>
+                            <div class="pull-right">
+                                <span class="col-20">
+                                    <a href="{{ path('kuakao_admin_member_show', {'id':val.id}) }}" class="btn btn-sm btn-primary">查看</a>
+                                    <a href="{{ path('kuakao_admin_member_edit', {'id':val.id}) }}" class="btn btn-sm btn-primary">编辑</a>
+                                    <a onclick="del({{ val.id }});" class="btn btn-sm btn-danger">删除</a></span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </form>
+                    {{ knp_pagination_render(memberData) }}
+                </ul>
+            </div>
+        </div>
+    {% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function del(id) {
+        var vars = 'id='+id;
+        ui_confirm('确定要删除吗?', function() {
+            sendAjax("{{ path('kuakao_admin_member_delete') }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        window.location.href="{{ path('kuakao_admin_member_index') }}";
+                    });
+                } else {
+                    ui_alert(data.info, function() {});
+                }
+            });
+        });
+    }
+</script>
+{% endblock %}

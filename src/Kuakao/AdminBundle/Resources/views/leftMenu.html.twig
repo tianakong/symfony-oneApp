@@ -1,0 +1,11 @@
+<div class="sidebar navbar-static-side" id="sidebar">
+    <div id="user_info" class="text-center hidden-xs"  >
+        <span >当前用户：管理员</span>
+    </div>
+    <div id="nav_head" class="text-center" onclick="toggle_left_menu()">
+        <span class="menu-text">{{ topMenuName }}</span>
+        <b id="left_menu_icon" class="fa fa-angle-down pull-right"></b>
+    </div>
+    <!--左侧小菜单-->
+    {{ leftNavigation| raw }}
+</div>

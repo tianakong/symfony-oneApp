@@ -1,0 +1,37 @@
+kuakao_admin_scores_index:
+    path:     /scores/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:index" }
+
+kuakao_admin_scores_ajax:
+    path:     /scores/ajax/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:ajax" }
+
+kuakao_admin_scores_ajax2:
+    path:     /scores/ajax2/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:ajax2" }
+
+kuakao_admin_scores_ajaxxkml:
+    path:     /scores/ajaxxkml/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:ajaxxkml" }
+
+kuakao_admin_scores_ajaxyjxk:
+    path:     /scores/ajaxyjxk/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:ajaxyjxk" }
+
+kuakao_admin_scores_ajaxmajor:
+    path:     /scores/ajaxmajor/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:ajaxmajor" }
+
+kuakao_admin_scores_add:
+    path:     /scores/add/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:add" }
+
+
+kuakao_admin_scores_edit:
+    path:     /scores/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:edit" }
+
+
+kuakao_admin_scores_delete:
+    path:     /scores/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TScores:delete" }

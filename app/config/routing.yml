@@ -1,0 +1,6 @@
+kuakao_app:
+    resource: "@KuakaoAppBundle/Resources/config/routing.yml"
+    prefix:   /
+kuakao_admin:
+    resource: "@KuakaoAdminBundle/Resources/config/routing.yml"
+    prefix:   /

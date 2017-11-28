@@ -1,0 +1,4 @@
+<option value="0">--学校--</option>
+{% for val in school %}
+    <option {% if val.id == cid %} selected {% endif %} value="{{ val.id }}">{{ val.name }}</option>
+{% endfor %}

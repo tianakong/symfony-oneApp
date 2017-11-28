@@ -1,0 +1,53 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header clearfix">
+                <h1 class="col-sm-8">搜索</h1>
+                <div class="col-sm-4 search_box">
+                    <form name="form_search" id="form_search" method="get" class="pull-right">
+                        <input type="hidden" name="page" value="{{ page }}" />
+                        <div class="input-group col-20">
+                            <input  class="form-control" type="text" placeholder="请输入手机号" name="mobile" id="mobile"  value="{{ mobile }}" />
+                            <div class="input-group-btn">
+                                <a class="btn btn-sm btn-info" onclick="submit_search();"><i class="fa fa-search" ></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ul_table message-container ul_table_responsive">
+                <ul>
+                    <li class="thead">
+                        <div class="pull-left">
+                            <span class="col-10">ID</span>
+                            <span class="col-15 ">手机号</span>
+                            <span class="col-20 ">内容</span>
+                            <span class="col-15 ">发送时间</span>
+                            <span class="col-20 ">响应标识</span>
+                            <span class="col-10 ">响应码</span>
+                            <span class="col-10 ">发送场景</span>
+                        </div>
+                    </li>
+                    <form method="post" action="" name="form_data" id="form_data">
+                        {% for val in logData %}
+                        <li class="tbody">
+                            <div class="pull-left">
+                                <span class="col-10">{{ val.id }}</span>
+                                <span class="col-15">{{ val.mobile }}</span>
+                                <span class="col-20">{{ val.content }}</span>
+                                <span class="col-15">{{ val.sendTime|date('Y-m-d H:i:s') }}</span>
+                                <span class="col-20">{{ val.status }}</span>
+                                <span class="col-10">{{ val.code }}</span>
+                                <span class="col-10">{{ val.user }}</span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </form>
+                    {{ knp_pagination_render(logData) }}
+                </ul>
+            </div>
+        </div>
+    {% endautoescape %}
+{% endblock %}

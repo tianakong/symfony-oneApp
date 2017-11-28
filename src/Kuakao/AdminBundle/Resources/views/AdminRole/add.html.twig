@@ -1,0 +1,62 @@
+{% extends 'KuakaoAdminBundle:layout.html.twig' %}
+{% block topMenu %}{% endblock %}
+{% block leftMenu %}{% endblock %}
+{% block cur %}{% endblock %}
+{% block body %}
+<div class="popup-fixed">
+    <div class="popup-header clearfix">
+        <div class="pull-left">
+            <h1>添加菜单</h1>
+        </div>
+        <div class="pull-right">
+            <a onclick="save_data();" class="btn btn-sm btn-primary">确定</a>
+            <a onclick="myclose();" class="btn btn-sm btn-default">关闭</a>
+        </div>
+    </div>
+    <div class="popup-body" style="height: 420px;overflow-y: auto;">
+        {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal clearfix'},'name':'form_data'} ) }}
+        <div class="form-group col-xs-12">
+            <label class="col-xs-3 control-label" for="rolename">角色名称*：</label>
+            <div class="col-xs-9">
+                {{ form_widget( form.rolename, {'attr': {'class':'form-control', 'check':'require', 'msg':'请输入角色名称'},'id':'rolename' })  }}
+            </div>
+        </div>
+        <div class="form-group col-xs-12">
+            <label class="col-xs-3 control-label" for="listorder">排序：</label>
+            <div class="col-xs-9">
+                {{ form_widget( form.listorder, {'attr': {'class':'form-control'},'id':'listorder', 'value':'0' })  }}
+            </div>
+        </div>
+        <div class="form-group col-xs-12">
+            <label class="col-xs-3 control-label" for="disabled">状态：</label>
+            <div class="col-xs-9">
+                {{ form_widget( form.disabled, {'attr': {'class':'form-control'},'id':'disabled' })  }}
+            </div>
+        </div>
+        <div class="form-group col-xs-12">
+            <label class="col-sm-4 control-label" for="remark" >备注：</label>
+            <div class="col-sm-8" >
+                {{ form_widget( form.description, {'attr': {'class':'form-control col-xs-12', 'rows':'5'},'id':'description' })  }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+<script>
+    function save_data() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_adminrole_add') }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape true %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>菜单管理</h1>
+    </div>
+    <form id="form_search" name="form_search" method="post" action="">
+        <div class="operate panel panel-default">
+            <div class="panel-body">
+                <div class="pull-left">
+                    <select name="eq_pid" action="" id="eq_pid" class="form-control col-14" onchange="submit_search();">
+                        {{ topMenuData|raw  }}
+                    </select>
+                </div>
+                <div class="pull-right">
+                    <a onclick="add();" class="btn btn-sm btn-primary">新增</a>
+                    <a onclick="save_edit();"  class="btn btn-sm btn-primary">保存</a>
+                    |
+                    <a onclick="del();"  class="btn btn-sm btn-danger">删除</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-4 sub_left_menu">
+            <div class="well">
+                {{ leftMenuData|raw }}
+            </div>
+        </div>
+        <div class="col-sm-8 sub_content">
+            {{ form_start(form, {'attr':{'id':'form_data','class':'well form-horizontal clearfix'},'name':'form_data'} ) }}
+                <input type="hidden" name="id" id="id" value="{{ eq_pid }}" />
+                <select name="node_list" id="node_list" class="hidden">
+                    <option value="0">根节点</option>
+                    {{ allMenuData|raw }}
+                </select>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label" for="name">名称*：</label>
+                    <div class="col-sm-8">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control','check':'require','msg':'请输入名称'},'id':'name' }) }}
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label"   for="url">上级菜单：</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input name="node_name" class="form-control val" id="node_name" type="text"  readonly="readonly"/>
+                            {{ form_widget(form.parentid, {'attr': {'class': 'form-control','check':'require','msg':'请选择父节点'},'id':'parentid','type':'hidden' }) }}
+                            <span class="input-group-btn">
+                                <button class="btn btn-sm btn-primary" onclick="select_pid()" type="button">选择</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label"  for="badge_function">路由名称：</label>
+                    <div class="col-sm-8">
+                        {{ form_widget(form.routename, {'attr': {'class': 'form-control','check':'require','msg':'请填写路由名称'},'id':'routename' }) }}
+                        {{ form_widget(form.url, {'attr': {'class': 'form-control'},'id':'url', 'type':'hidden' }) }}
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label" for="sort">排序：</label>
+                    <div class="col-sm-8">
+                        {{ form_widget(form.listorder, {'attr': {'class': 'form-control'},'id':'listorder' }) }}
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label"  for="is_del">显示菜单：</label>
+                    <div class="col-sm-8">
+                        {{ form_widget(form.display, {'attr': {'class': 'form-control'},'id':'display' }) }}
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script type="text/javascript">
+        function add() {
+            winopen("{{ path('kuakao_admin_menu_add') }}",560, 470);
+        };
+        function save_edit() {
+            if (check_form("form_data")) {
+                var vars = $("#form_data").serialize();
+                sendAjax("{{ path('kuakao_admin_menu_edit') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            parent.location.reload(true);
+                            myclose();
+                        });
+                    } else {
+                        ui_error(data.info);
+                    }
+                });
+            }
+        }
+
+        function del() {
+            var vars = $("#form_data").serialize();
+            ui_confirm('确定要删除吗?', function() {
+                sendAjax("{{ path('kuakao_admin_menu_delete') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            window.location.href="{{ path('kuakao_admin_menu_index') }}";
+                        });
+                    } else {
+                        ui_alert(data.info, function() {});
+                    }
+                });
+            });
+        }
+
+        function showdata(result) {
+            for (var s in result.data) {
+                set_val(s, result.data[s]);
+            }
+            $("#node_name").val($("#node_list option[value='" + $("#parentid").val() + "']").text());
+        }
+
+        $(document).ready(function() {
+            set_val('eq_pid', {{ eq_pid }});
+            $(".sub_left_menu .tree_menu a").click(function() {
+                $(".sub_left_menu .tree_menu  a").each(function() {
+                    $(this).attr("class", "");
+                });
+                $(this).attr("class", "active");
+                sendAjax("{{ path('kuakao_admin_menu_read') }}", "id=" + $(this).attr("node"), function(data) {
+                    showdata(data);
+                });
+                return false;
+            });
+            sendAjax("{{ path('kuakao_admin_menu_read') }}", "id={{ eq_pid }}", function(data) {
+                showdata(data);
+            });
+        });
+    </script>
+{% endblock %}

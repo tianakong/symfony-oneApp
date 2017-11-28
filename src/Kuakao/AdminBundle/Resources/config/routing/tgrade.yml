@@ -1,0 +1,24 @@
+kuakao_admin_tgrade_index:
+    path:     /grade/
+    defaults: { _controller: "KuakaoAdminBundle:TGrade:index" }
+
+
+kuakao_admin_tgrade_show:
+    path:     /grade/show/
+    defaults: { _controller: "KuakaoAdminBundle:TGrade:show" }
+
+
+kuakao_admin_tgrade_new:
+    path:     /grade/new/
+    defaults: { _controller: "KuakaoAdminBundle:TGrade:new" }
+
+
+kuakao_admin_tgrade_edit:
+    path:     /grade/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TGrade:edit" }
+
+
+kuakao_admin_tgrade_delete:
+    path:     /grade/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TGrade:delete" }
+

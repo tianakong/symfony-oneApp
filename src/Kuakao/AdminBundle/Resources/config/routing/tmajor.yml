@@ -1,0 +1,27 @@
+kuakao_admin_tmajor_index:
+    path:     /major/
+    defaults: { _controller: "KuakaoAdminBundle:TMajor:index" }
+
+kuakao_admin_tmajor_show:
+    path:     /major/show/
+    defaults: { _controller: "KuakaoAdminBundle:TMajor:show" }
+
+kuakao_admin_tmajor_new:
+    path:     /major/add/
+    defaults: { _controller: "KuakaoAdminBundle:TMajor:new" }
+
+kuakao_admin_tmajor_edit:
+    path:     /major/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TMajor:edit" }
+
+kuakao_admin_tmajor_delete:
+    path:     /major/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TMajor:delete" }
+
+kuakao_admin_tmajor_ajaxyj:
+    path:     /major/ajaxyj/
+    defaults: { _controller: "KuakaoAdminBundle:TMajor:ajaxyj" }
+
+kuakao_admin_tmajor_schooladd:
+    path:     /major/schooladd/
+    defaults: { _controller: "KuakaoAdminBundle:TMajor:schooladd" }

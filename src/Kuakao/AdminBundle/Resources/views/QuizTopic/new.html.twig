@@ -1,0 +1,112 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>添加测试题</h1>
+    </div>
+{% if TopicNumx != TopicNum %}
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+    <input type="hidden" name="ajax" id="ajax" value="1">
+    <input type="hidden" name="quizid" value="{{ quizid }}">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">标题：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.title, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'标题'},'id':'title' })  }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">选项：</label>
+        <div class="col-sm-10">
+            {% for i in 1..OptionNum %}
+                <div class="col-xs-12">
+                    <div class="{{ cycle(['col-xs-5'],i) }}">
+                        <input type="text" id="content" name="content{{ i }}" class="form-control" placeholder="选项"/>
+                    </div>
+                    <div class="{{ cycle(['col-xs-2'],i) }}">
+                        <input type="text" id="score" name="score{{ i }}" class="form-control" placeholder="分值"/>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <span id="msg"></span>
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <a onclick="save()"  class="btn btn-sm btn-primary">保存</a>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endif %}
+
+
+</div>
+
+    {#{% for valq in quizData%}#}
+    {#{{ valq.title }}#}
+    {#{% for valo in optionData %}#}
+    {#{% if valq.topicid == valo.topicid %}#}
+    {#<br>#}
+    {#{{ valo.content }}#}
+    {#{{ valo.score }}#}
+    {#{% endif %}#}
+    {#{% endfor %}#}
+    {#{% endfor %}#}
+
+    <div class="form-horizontal well">
+    {% for valq in quizData %}
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">题目：</label>
+            <div class="col-sm-3">
+                <input class="form-control" id="disabledInput" type="text" placeholder="{{ valq.title }}" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">选项：</label>
+            <div class="col-sm-10">
+                {% for valo in optionData %}
+                    {% if valq.topicid == valo.topicid %}
+                        <div class="col-xs-12">
+                            <div class="col-xs-5">
+                                <input class="form-control" id="disabledInput" type="text" placeholder="{{ valo.content }}" disabled>
+                            </div>
+                            <div class="col-xs-2">
+                                <input class="form-control" id="disabledInput" type="text" placeholder="{{ valo.score }}" disabled>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="pull-right">
+            <span class="col-xs-30"><a href="{{ path('kuakao_admin_quiztopic_edit', {'quizid':quizid,'topicid':valq.topicid}) }}">编辑</a></span>
+        </div>
+        <hr>
+    {% endfor %}
+    </div>
+
+
+
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function save() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_quiztopic_new',{'quizid':quizid}) }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

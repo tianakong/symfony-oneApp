@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TNews</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tNews.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ tNews.title }}</td>
+            </tr>
+            <tr>
+                <th>Addtime</th>
+                <td>{{ tNews.addtime }}</td>
+            </tr>
+            <tr>
+                <th>Adduser</th>
+                <td>{{ tNews.adduser }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ tNews.content }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if tNews.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tnews_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

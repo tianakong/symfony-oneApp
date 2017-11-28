@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <title>高校介绍</title>
+    <script src="{{ asset('bundles/app/js/jquery-1.11.3.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/radialIndicator.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jquery.animateNumber.min.js') }}"></script>
+    <link rel="stylesheet" href="http://cachecss.kuakao.com/jixun/public/css/public.css" />
+    <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+{% autoescape %}
+<div class="gxxq">
+    <div class="introduce">
+        <ul class="numList">
+            <li class="br">
+                <p id="count1">0</p>
+                <span>硕士点</span>
+            </li>
+            <li class="br">
+                <p id="count2">0</p>
+                <span>博士点</span>
+            </li>
+            <li>
+                <p id="count3">0</p>
+                <span>重点学科</span>
+            </li>
+        </ul>
+        <div class="introduceText">
+           {{ data.about|raw }}
+        </div>
+    </div>
+</div>
+{% endautoescape %}
+<script>
+    $(function(){
+        //院校介绍数字动画
+        var num1 = '{{ data.master }}';
+        var num2 =  '{{ data.doctor }}';
+        var num3 = '{{ data.keySubjects }}';
+        $('#count1').prop('number', 0).animateNumber({
+            number: num1
+        },1000);
+        $('#count2').prop('number', 0).animateNumber({
+            number: num2
+        },1000);
+        $('#count3').prop('number', 0).animateNumber({
+            number: num3
+        },1000);
+
+    });
+
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</body>
+</html>

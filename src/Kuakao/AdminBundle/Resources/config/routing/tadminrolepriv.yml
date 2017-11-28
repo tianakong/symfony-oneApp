@@ -1,0 +1,13 @@
+kuakao_admin_adminrolepriv_index:
+    path:     /adminrolepriv/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRolePriv:index" }
+
+kuakao_admin_adminrolepriv_read:
+    path:     /adminrolepriv/read/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRolePriv:read" }
+
+kuakao_admin_adminrolepriv_add:
+    path:     /adminrolepriv/add/
+    defaults: { _controller: "KuakaoAdminBundle:TAdminRolePriv:add" }
+
+

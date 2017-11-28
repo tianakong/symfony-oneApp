@@ -1,0 +1,107 @@
+{% extends 'KuakaoAdminBundle:layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>权限分配</h1>
+    </div>
+    <form id="form_search" name="form_search" method="post" action="">
+        <div class="operate panel panel-default">
+            <div class="panel-body">
+                <div class="pull-left">
+                    <select name="eq_pid" action="" id="eq_pid" class="form-control col-14" onchange="submit_search();">
+                        <option value="0">全部</option>
+                        {{ topMenuData|raw }}
+                    </select>
+                </div>
+                <div class="pull-right">
+                    <a onclick="save();" class="btn btn-sm btn-primary">保存</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-4 role_list">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>角色名称</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for val in adminRole  %}
+                <tr id="{{ val.id }}">
+                    <td>{{ val.id }}</td>
+                    <td>{{ val.rolename }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-8 wrap">
+            <form id="form_data" method="post" action="">
+                <input type="hidden" name="roleid" id="role_id" value="" />
+                <input type="hidden" name="ajax" id="ajax" value="1" />
+                <div class="wrap tree_menu">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width:100%;text-align:center">
+                                <label class="inline pull-left">
+                                    <input class="ace" type="checkbox" name="id-toggle-all" id="id-toggle-all" />
+                                    <span class="lbl"></span>
+                                </label>菜单
+                            </th>
+                        </tr>
+                        {% for val in menuData %}
+                        <tr>
+                            <td class="tbody">
+                                <label>
+                                    <input class="ace {{ val.routename }}" type="checkbox"  name="menu_id[]" node="{{ val.routename }}"  value="{{ val.routename }}" />
+                                    <span class="lbl">&nbsp;{{ val.name|raw }}</span>
+                                </label>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script type="text/javascript">
+        function save() {
+            if ($("#role_id").val() == '') {
+                ui_error("请选择权限组");
+                return false;
+            };
+            sendForm("form_data", "{{ path('kuakao_admin_adminrolepriv_add') }}");
+        };
+
+        function showdata(result) {
+            $(".wrap .tree_menu input").each(function() {
+                $(this).prop("checked", false);
+            });
+            for (var s in result.data) {
+                var def_class = result.data[s].routename;
+                $("."+def_class).prop("checked", "true");
+            };
+        };
+
+        $(document).ready(function() {
+            set_val('eq_pid', {{ eq_pid }});
+            $(".role_list tbody tr").click(function() {
+                $(".role_list  tr").removeClass("active");
+                $(this).attr("class", "active");
+                $("#role_id").val($(this).attr("id"));
+                sendAjax("{{ path('kuakao_admin_adminrolepriv_read') }}", "roleid=" + $(this).attr("id"), function(data) {
+                    showdata(data);
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

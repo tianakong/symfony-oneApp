@@ -1,0 +1,79 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>添加管理员</h1>
+    </div>
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+        <input type="hidden" name="ajax" id="ajax" value="1">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="password">用户名：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.username, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入用户名称'},'id':'username' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">密码：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.password, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入用户密码'},'id':'password','type':'password' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">确认密码：</label>
+            <div class="col-sm-10">
+                <input class="form-control col-30" type="password" name="confirm_password" id="confirm_password" value=""  >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">Email：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.email, {'attr': {'class':'form-control col-30', 'check':'email', 'msg':'请输入正确的邮箱'},'id':'email' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">真实姓名：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.realname, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入真实姓名'},'id':'realname' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">所属角色：</label>
+            <div class="col-sm-10">
+                <select class="form-control col-30" name="roleid" id="roleid">
+                    <option value="0">请选择角色</option>
+                    {% for val in roleData %}
+                        <option value="{{ val.id }}">{{ val.rolename }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <span id="msg"></span>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <a onclick="save()"  class="btn btn-sm btn-primary">保存</a>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function save() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_admin_add') }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

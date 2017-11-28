@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: 3306
+    database_name: 'app'
+    database_user: app
+    database_password: 'wksjammcsw*(2138923'
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 10824f38223ff0c2fd0dc5130969bce8c9dcfe52

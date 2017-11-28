@@ -1,0 +1,59 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block topMenu %}{% endblock %}
+{% block leftMenu %}{% endblock %}
+{% block cur %}{% endblock %}
+{% block body %}
+{% autoescape true %}
+<input type="hidden" name="val" id="val">
+<input type="hidden" name="name" id="name">
+<div class="popup-header clearfix">
+    <div class="pull-left">
+        <h1>请选择父节点</h1>
+    </div>
+    <div class="pull-right">
+        <a onclick="save();" class="btn btn-sm btn-primary">确定</a>
+        <a onclick="myclose();" class="btn btn-sm btn-default">关闭</a>
+    </div>
+</div>
+<div class="popup-body" style="height: 420px;overflow-y: auto;">
+    <div class="popup_tree_menu">
+        <ul class="tree_menu">
+            <li>
+                <a node="0"><i class="icon"></i> <span>根节点</span> </a>
+                {{ menuData|raw }}
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    function save() {
+        if ($("#name").val().length > 0) {
+            $("#node_name", parent.document).val($("#name").val());
+            $("#parentid", parent.document).val($("#val").val());
+        } else {
+            ui_error("请选择节点");
+            return false;
+        }
+        myclose();
+    }
+
+    $(document).ready(function() {
+        parent_node = $(".sub_left_menu ul.tree_menu a.active", parent.document).attr("node");
+        $("ul.tree_menu a[node='" + parent_node + "']").addClass("disabled");
+        $(".popup_tree_menu a:not('.disabled')").click(function() {
+            $("#val").val($(this).attr("node"));
+            $("#name").val($(this).children("span").text());
+            $(".tree_menu a.active").removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+    $(document).ready(function() {
+        $(".popup-container").width($("#dialog", parent.document).width());
+        if (is_mobile()) {
+            $(".popup-container").height(window.screen.height - 40);
+            $(".popup-container").css('overflow', 'auto');
+        }
+    });
+</script>
+{% endautoescape  %}
+{% endblock %}

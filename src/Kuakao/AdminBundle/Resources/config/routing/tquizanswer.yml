@@ -1,0 +1,20 @@
+kuakao_admin_quizanswer_index:
+    path:     /quizanswer/
+    defaults: { _controller: "KuakaoAdminBundle:TQuizAnswer:index" }
+
+kuakao_admin_quizanswer_add:
+    path:     /quizanswer/add
+    defaults: { _controller: "KuakaoAdminBundle:TQuizAnswer:add" }
+
+kuakao_admin_quizanswer_edit:
+    path:     /quizanswer/edit
+    defaults: { _controller: "KuakaoAdminBundle:TQuizAnswer:edit" }
+
+kuakao_admin_quizanswer_delete:
+    path:     /quizanswer/delete
+    defaults: { _controller: "KuakaoAdminBundle:TQuizAnswer:delete" }
+
+
+
+
+

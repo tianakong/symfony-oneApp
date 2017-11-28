@@ -1,0 +1,72 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+    {% autoescape %}
+        <div class="wrapper wrapper-content">
+            <div class="page-header clearfix">
+                <h1 class="col-sm-8">反馈管理</h1>
+                <div class="col-sm-4 search_box">
+                    <form name="form_search" id="form_search" method="get" class="pull-right">
+                        <input type="hidden" name="page" value="{{ page }}" />
+                        <div class="input-group col-20">
+                            <input  class="form-control" type="text" name="username" id="username"  value="{{ username }}" />
+                            <div class="input-group-btn">
+                                <a class="btn btn-sm btn-info" onclick="submit_search();"><i class="fa fa-search" ></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="ul_table message-container ul_table_responsive">
+                <ul>
+                    <li class="thead">
+                        <div class="pull-left">
+                            <span class="col-10">ID</span>
+                            <span class="col-15 ">反馈人</span>
+                            <span class="col-35 ">反馈内容</span>
+                            <span class="col-20 ">反馈时间</span>
+                            <span class="col-10 ">状态</span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="col-15 ">管理</span>
+                        </div>
+                    </li>
+                    <form method="post" action="" name="form_data" id="form_data">
+                        {% for val in feedbackData %}
+                        <li class="tbody">
+                            <div class="pull-left">
+                                <span class="col-10">{{ val.id }}</span>
+                                <span class="col-15">{{ val.username }}&nbsp;</span>
+                                <span class="col-35">{{ val.content }}&nbsp;</span>
+                                <span class="col-20">{{ val.addTime|date('Y-m-d H:i:s') }}&nbsp;</span>
+                                <span class="col-10">{% if val.status =='0' %}未处理{% else %}已处理{% endif %}</span>
+                            </div>
+                            <div class="pull-right">
+                                <span class="col-15"><a href="{{ path('kuakao_admin_feedback_edit', {'id':val.id}) }}" class="btn btn-sm btn-primary">编辑</a>  <a onclick="del({{ val.id }});" class="btn btn-sm btn-danger">删除</a></span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </form>
+                    {{ knp_pagination_render(feedbackData) }}
+                </ul>
+            </div>
+        </div>
+    {% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function del(id) {
+        var vars = 'id='+id;
+        ui_confirm('确定要删除吗?', function() {
+            sendAjax("{{ path('kuakao_admin_feedback_delete') }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        window.location.href="{{ path('kuakao_admin_feedback_index') }}";
+                    });
+                } else {
+                    ui_alert(data.info, function() {});
+                }
+            });
+        });
+    }
+</script>
+{% endblock %}

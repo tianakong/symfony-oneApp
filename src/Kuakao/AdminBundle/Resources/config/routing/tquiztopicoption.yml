@@ -1,0 +1,24 @@
+quiztopicoption_index:
+    path:     /
+    defaults: { _controller: "KuakaoAdminBundle:TQuizTopicOption:index" }
+    methods:  GET
+
+quiztopicoption_show:
+    path:     /{id}/show
+    defaults: { _controller: "KuakaoAdminBundle:TQuizTopicOption:show" }
+    methods:  GET
+
+quiztopicoption_new:
+    path:     /new
+    defaults: { _controller: "KuakaoAdminBundle:TQuizTopicOption:new" }
+    methods:  [GET, POST]
+
+quiztopicoption_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "KuakaoAdminBundle:TQuizTopicOption:edit" }
+    methods:  [GET, POST]
+
+quiztopicoption_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "KuakaoAdminBundle:TQuizTopicOption:delete" }
+    methods:  DELETE

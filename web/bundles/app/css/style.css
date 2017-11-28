@@ -1,0 +1,664 @@
+html {
+  -ms-touch-action: none;
+}
+html,
+body,
+header,
+section,
+footer,
+div,
+h1,
+h2,
+h4,
+dl,
+dt,
+dd,
+ul,
+li,
+p,
+a,
+b,
+i,
+span {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  color: #120d0d;
+}
+input {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: "Microsoft YaHei";
+  height: 100%;
+  font-size: 10px;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.fl {
+  float: left;
+  display: inline;
+}
+.fr {
+  float: right;
+  display: inline;
+}
+.fill:before {
+  display: table;
+  content: "";
+  height: 0;
+  visibility: hidden;
+}
+.blk {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.gxxq .introduce .numList {
+  display: flex;
+  border-top: 1px #cccccc solid;
+  border-bottom: 1px #cccccc solid;
+}
+.gxxq .introduce .numList li {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+.gxxq .introduce .numList li p {
+  font-size: 35px;
+  color: #0099ff;
+}
+.gxxq .introduce .numList li span {
+  color: #666666;
+  padding-top: 10px;
+}
+.gxxq .introduce .numList li.br {
+  background: url("../images/line_03.jpg") no-repeat right center;
+}
+.gxxq .introduce .introduceText {
+  padding: 18px 15px 10px 15px;
+}
+.gxxq .introduce .introduceText p {
+  font-size: 14px;
+  line-height: 24px;
+  padding-bottom: 8px;
+}
+.gxxq .offer .offerTit {
+  border-top: 1px #cccccc solid;
+  border-bottom: 1px #cccccc solid;
+  height: 1.05rem;
+  line-height: 1.05rem;
+}
+.gxxq .offer .offerTit h1 {
+  font-size: 0.3rem;
+  font-weight: normal;
+  padding-left: 0.2rem;
+  background: url("../images/hb_06.jpg") no-repeat left center;
+  margin-left: 0.26rem;
+}
+.gxxq .offer .offerTit ul li {
+  text-align: center;
+  width: 1.05rem;
+}
+.gxxq .offer .offerTit ul li a {
+  color: #999999;
+  font-size: 0.3rem;
+}
+.gxxq .offer .offerTit ul li span {
+  color: #dddddd;
+}
+.gxxq .offer .offerTit ul li.on a {
+  color: #0099ff;
+}
+.gxxq .offer .tabBox .tabInfo {
+  display: none;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable {
+  width: 100%;
+  text-align: center;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .offerTableTit td {
+  border-bottom: 1px #dddddd solid;
+  height: 0.60rem;
+  color: #999999;
+  font-size: 0.22rem;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .offerTableTit td span {
+  color: #cccccc;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .offerTableInfo td {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px #dddddd solid;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .offerTableInfo td.w2 {
+  border-left: 1px #dddddd solid;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .w1 {
+  width: 0.71rem;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .w2 {
+  width: 2.72rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .w3 {
+  width: 0.83rem;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .w4 {
+  width: 1.44rem;
+}
+.gxxq .offer .tabBox .tabInfo .offerTable .w5 {
+  width: 1.6rem;
+}
+.gxxq .offer .tabBox .tabInfo .tabText {
+  padding: 0.2rem;
+  padding-bottom: 0;
+  border-bottom: 1px #dddddd solid;
+}
+.gxxq .offer .tabBox .tabInfo .tabText p {
+  padding-bottom: 0.2rem;
+  font-size: 0.24rem;
+  color: #666666;
+}
+.gxxq .offer .tabBox .tabInfo.on {
+  display: block;
+}
+.gxxq .job .jobTit {
+  border-top: 1px #cccccc solid;
+  border-bottom: 1px #cccccc solid;
+  padding: 0.4rem 0;
+  display: flex;
+}
+.gxxq .job .jobTit .jobInfo {
+  flex: 1;
+}
+.gxxq .job .jobTit .jobInfo .pieBox {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.gxxq .job .jobTit .jobInfo .pieBox #indicatorContainer {
+  position: relative;
+}
+.gxxq .job .jobTit .jobInfo .pieBox #indicatorContainer p {
+  color: #666666;
+}
+.gxxq .job .jobTit .jobInfo .pieBox #indicatorContainer .t1 {
+  position: absolute;
+  left: 50%;
+  top: 35px;
+  margin-left: 20px;
+  font-size: 0.26rem;
+}
+.gxxq .job .jobTit .jobInfo .pieBox #indicatorContainer .t2 {
+  font-size: 0.2rem;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  margin-left: -17px;
+}
+.gxxq .job .jobTit .jobInfo .price {
+  text-align: center;
+  font-size: 0.4rem;
+  color: #fe9c3b;
+  font-weight: normal;
+}
+.gxxq .job .jobTit .jobInfo .price span {
+  font-size: 0.7rem;
+  color: #fe9c3b;
+}
+.gxxq .job .jobTit .jobInfo .priceText {
+  text-align: center;
+  color: #666666;
+}
+.gxxq .job .jobTit .br {
+  background: url("../images/line2_03.jpg") no-repeat right center;
+}
+.gxxq .job .jobText {
+  padding: 0.3rem 0.26rem;
+}
+.gxxq .job .jobText p {
+  font-size: 0.28rem;
+  line-height: 0.5rem;
+  padding-left: 0.15rem;
+}
+.gxxq .job .jobText .bl {
+  background: url("../images/line3_03.jpg") no-repeat left center;
+  background-size: 0.05rem 0.26rem;
+}
+.nameList .pd {
+  padding: 0 0.25rem;
+}
+.nameList .pd h1 {
+  height: 1.16rem;
+  line-height: 1.16rem;
+  font-weight: normal;
+  font-size: 0.28rem;
+}
+.nameList .pd img {
+  display: block;
+  width: 100%;
+}
+.nameList .pd p {
+  padding: 0.25rem 0;
+  font-size: 0.28rem;
+}
+.nameList .pd p a {
+  color: #0099ff;
+}
+.nameList .formBox {
+  border-top: 1px #cccccc solid;
+  padding-top: 0.3rem;
+}
+.nameList .formBox .pb {
+  padding: 0 0.25rem 0.3rem 0.25rem;
+}
+.nameList .formBox .pb input {
+  width: 100%;
+  height: 0.94rem;
+  box-sizing: border-box;
+  border: 1px #cccccc solid;
+  font-size: 0.32rem;
+  text-indent: 0.33rem;
+  border-radius: 0.08rem;
+}
+.nameList .formBox .submitBtn {
+  display: block;
+  width: 4.06rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
+  color: #fff;
+  background: #0099ff;
+  font-size: 0.32rem;
+  margin: 0 auto;
+  border-radius: 0.4rem;
+  margin-top: 0.3rem;
+}
+.learnMore .learnMoreInfo {
+  padding: 0.4rem 0.25rem;
+  border-bottom: 1px #cccccc solid;
+}
+.learnMore .learnMoreInfo h1 {
+  font-size: 0.34rem;
+  font-weight: normal;
+  background: url("../images/line3_03.jpg") no-repeat left center;
+  padding-left: 0.15rem;
+  background-size: 0.05rem 0.32rem;
+}
+.learnMore .learnMoreInfo ul {
+  padding-top: 0.25rem;
+}
+.learnMore .learnMoreInfo ul li {
+  padding-left: 0.16rem;
+  color: #666666;
+  line-height: 0.5rem;
+  background: url("../images/dot_03.jpg") no-repeat left center;
+  background-size: 0.06rem 0.06rem;
+}
+.learnMore .learnMoreInfo img {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+.learnMore .learnMoreInfo2 {
+  padding: 0.4rem 0.25rem;
+}
+.learnMore .learnMoreInfo2 h1 {
+  font-size: 0.34rem;
+  font-weight: normal;
+  background: url("../images/line3_03.jpg") no-repeat left center;
+  padding-left: 0.15rem;
+  background-size: 0.05rem 0.32rem;
+  margin-bottom: 0.3rem;
+}
+.learnMore .learnMoreInfo2 p {
+  color: #666;
+  font-size: 0.3rem;
+  line-height: 0.6rem;
+}
+.learnMore .learnMoreInfo2 p span {
+  color: #0099ff;
+}
+/*zhuan jia shuo*/
+.theTit {
+  color: #999;
+  height: 1.08rem;
+  border-bottom: 1px solid #ccc;
+  line-height: 1.08rem;
+  padding-left: 0.26rem;
+  font-size: 0.32rem;
+  font-weight: 100;
+}
+.theTit span {
+  display: block;
+  width: 0.05rem;
+  height: 0.28rem;
+  background: #0099ff;
+  margin-right: 0.1rem;
+  float: left;
+  margin-top: 0.4rem;
+}
+.theTit2 {
+  border-bottom: 0;
+  color: #333;
+}
+.theTit3 {
+  height: 0.88rem;
+  line-height: 0.88rem;
+}
+.theTit3 span {
+  margin-top: 0.3rem;
+}
+.expertSay .userBar {
+  width: 100%;
+  height: 3.15rem;
+  background: #09f;
+  position: relative;
+  padding: 0.2rem;
+}
+.expertSay .userBar .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3.55rem;
+}
+.expertSay .userBar .userImg {
+  width: 1.72rem;
+  height: 1.72rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 1px solid #45b5ff;
+  padding: 0.05rem;
+}
+.expertSay .userBar .userImg img {
+  border-radius: 50%;
+}
+.expertSay .userBar .userDetail {
+  text-align: center;
+  font-size: 0.24rem;
+}
+.expertSay .userBar .userDetail h4 {
+  font-weight: 100;
+  color: #fff;
+  font-size: 0.32rem;
+  margin: 0.1rem 0;
+}
+.expertSay .userBar .userDetail p {
+  color: #a7dcff;
+}
+.expertSay .articleBar p{
+  padding: 0.26rem;
+  font-size: 0.28rem;
+  line-height: 0.4rem;
+  text-indent: 2em;
+}
+.expertSay .message {
+  display: block;
+  width: 3.38rem;
+  margin: 0.6rem auto;
+  height: 0.8rem;
+  border-radius: 0.4rem;
+  background: #0099ff;
+  text-align: center;
+  line-height: 0.8rem;
+  font-size: 0.32rem;
+  color: #fff;
+}
+/*shipin*/
+.videoBar .videoTop {
+  border: 1px solid #ccc;
+  border-left: 0;
+  border-right: 0;
+  padding: 0.48rem 0.2rem;
+}
+.videoBar .videoTop .videoTeacher {
+  display: flex;
+  padding-bottom: 0.2rem;
+}
+.videoBar .videoTop .videoTeacher .videoImg {
+  flex: 1;
+}
+.videoBar .videoTop .videoTeacher .videoImg img {
+  border-radius: 50%;
+}
+.videoBar .videoTop .videoTeacher .videoWord {
+  flex: 3;
+  padding-left: 0.3rem;
+  font-size: 0.26rem;
+}
+.videoBar .videoTop .videoTeacher .videoWord h4 {
+  width: 1.2rem;
+  height: 0.4rem;
+  background: #0099ff;
+  text-align: center;
+  line-height: 0.4rem;
+  border-radius: 0.05rem;
+  color: #fff;
+  font-weight: 100;
+  font-size: 0.28rem;
+  margin-bottom: 0.15rem;
+}
+.videoBar .videoTop .videoTeacher .videoWord p {
+  color: #666;
+  line-height: 0.4rem;
+}
+.videoBar .videoTop .videoDetail {
+  font-size: 0.26rem;
+  color: #666;
+  line-height: 0.38rem;
+}
+.videoBar .videoBot ul {
+  padding: 0 0.2rem;
+}
+.videoBar .videoBot ul li {
+  line-height: 0.5rem;
+  font-size: 0.3rem;
+}
+.videoBar .videoBot ul li a {
+  color: #666;
+}
+/*zhuanye*/
+.majorBar .majorWord {
+  font-size: 0.28rem;
+  padding: 0 0.2rem;
+  text-indent: 0.56rem;
+}
+.majorBar .notes {
+  display: block;
+  color: #999;
+  font-size: 0.26rem;
+  margin-top: 0.1rem;
+}
+.majorBar p {
+  line-height: 0.6rem;
+}
+/*zixun*/
+.inforBar header {
+  padding: 0.3rem 0 0.3rem 0.2rem;
+  background: #0099ff;
+}
+.inforBar header h4 {
+  font-size: 0.36rem;
+  font-weight: 100;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+.inforBar header p {
+  font-size: 0.24rem;
+}
+.inforBar header p span {
+  display: inline-block;
+  padding-right: 0.3rem;
+  color: #fff;
+}
+.inforBar .questionList {
+  padding: 0.2rem;
+}
+.inforBar .questionList h4 {
+  font-size: 0.3rem;
+  font-weight: 100;
+  margin-bottom: 0.2rem;
+}
+.inforBar .questionList p {
+  font-size: 0.28rem;
+  margin-bottom: 0.55rem;
+}
+.inforBar .questionList img {
+	width:100%;
+}
+/*shiyongtiaokuan*/
+.useTerm {
+  padding: 0.4rem 0.25rem;
+}
+.useTerm h4 {
+  font-size: 0.32rem;
+  font-weight: 100;
+  margin: 0.3rem 0;
+  color: #333;
+}
+.useTerm h4:first-child {
+  margin-top: 0;
+}
+.useTerm p {
+  font-size: 0.28rem;
+  text-indent: 0.56rem;
+  color: #666;
+  line-height: 0.4rem;
+}
+.useTerm p.noIndent {
+  text-indent: 0;
+}
+/*shiyongxuzhi*/
+.useInst .yellowArea {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  position: relative;
+}
+.useInst .yellowArea img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.useInst .yellowArea h4 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ba8a45;
+  font-size: 0.26rem;
+  width: 100%;
+  font-weight: 100;
+  text-align: center;
+}
+.useInst .useList {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #ccc;
+}
+.useInst .useList h4 {
+  padding: 0 0.28rem 0 0.7rem;
+  font-weight: 100;
+  font-size: 0.32rem;
+  margin-bottom: 0.25rem;
+}
+.useInst .useList h4.listOne {
+  background: url("../images/use1.jpg") no-repeat 0.28rem center;
+  background-size: 0.36rem;
+}
+.useInst .useList h4.listTwo {
+  background: url("../images/use2.jpg") no-repeat 0.28rem center;
+  background-size: 0.36rem;
+}
+.useInst .useList h4.listThree {
+  background: url("../images/use3.jpg") no-repeat 0.28rem center;
+  background-size: 0.36rem;
+}
+.useInst .useList p {
+  padding: 0 0.6rem 0 0.76rem;
+  font-size: 0.28rem;
+  line-height: 0.38rem;
+  color: #999999;
+}
+.useInst .useList p.hasBot {
+  margin-bottom: 0.3rem;
+}
+.useInst .useList:last-child {
+  border-bottom: 0;
+}
+.about .container {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 0.32rem;
+}
+.about .container .intro {
+  color: #666666;
+  font-size: 0.3rem;
+  line-height: 0.44rem;
+  margin-top: 0.32rem;
+}
+.about .container .linkContainer {
+  height: 0.36rem;
+  margin-top: 0.38rem;
+}
+.about .container .linkContainer .Link img {
+  width: 0.36rem;
+  height: 0.28rem;
+  display: block;
+}
+.about .container .linkContainer .Link span {
+  color: #333333;
+  font-size: 0.28rem;
+  display: block;
+  margin-left: 0.1rem;
+  line-height: 0.36rem;
+}
+.about .container .linkContainer .Link a {
+  color: #0099ff;
+  font-size: 0.26rem;
+}
+.about .container .linkContainer .sina img {
+  margin-left: 0.05rem;
+}
+.about .container .linkContainer .wx img {
+  margin-left: 0.4rem;
+}
+.about .container .wxImg {
+  width: 2.88rem;
+  height: 2.88rem;
+  bottom: 2.1rem;
+  margin: 4.7rem auto 0;
+  display: block;
+}
+.about .container .share {
+  color: #0099ff;
+  font-size: 0.28rem;
+  text-align: center;
+  margin-top: 0.24rem;
+}

@@ -1,0 +1,92 @@
+kuakao_admin_tarea:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tarea.yml"
+    prefix:   /admin/area
+kuakao_admin_tschool:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tschool.yml"
+    prefix:   /admin/school
+kuakao_admin_tmenu:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tmenu.yml"
+    prefix:   /admin
+kuakao_admin_tadminrole:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tadminrole.yml"
+    prefix:   /admin
+kuakao_admin_tadminrolepriv:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tadminrolepriv.yml"
+    prefix:   /admin
+kuakao_admin_tadmin:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tadmin.yml"
+    prefix:   /admin
+
+kuakao_admin_tvideos:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tvideos.yml"
+    prefix:   /admin
+
+kuakao_admin_tmember:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tmember.yml"
+    prefix:   /admin
+
+kuakao_admin_tform:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tform.yml"
+    prefix:   /admin
+kuakao_admin_tcategory:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tcategory.yml"
+    prefix:   /admin
+kuakao_admin_tcategoryinfo:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tcategoryinfo.yml"
+    prefix:   /admin
+kuakao_admin_texpert:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/texpert.yml"
+    prefix:   /admin
+kuakao_admin_tspecial:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tspecial.yml"
+    prefix:   /admin
+kuakao_admin_tquiz:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tquiz.yml"
+    prefix:   /admin
+kuakao_admin_tquiztopic:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tquiztopic.yml"
+    prefix:   /admin
+
+
+
+kuakao_admin_tmajor:
+     resource: "@KuakaoAdminBundle/Resources/config/routing/tmajor.yml"
+     prefix:   /admin
+
+kuakao_admin_tyjxk:
+     resource: "@KuakaoAdminBundle/Resources/config/routing/tyjxk.yml"
+     prefix:   /admin
+
+kuakao_admin_tgrade:
+     resource: "@KuakaoAdminBundle/Resources/config/routing/tgrade.yml"
+     prefix:   /admin
+
+kuakao_admin_scores:
+     resource: "@KuakaoAdminBundle/Resources/config/routing/tscores.yml"
+     prefix:   /admin
+
+kuakao_admin_feedback:
+     resource: "@KuakaoAdminBundle/Resources/config/routing/tfeedback.yml"
+     prefix:   /admin
+
+
+
+kuakao_admin_index_login:
+    path:     /admin/
+    defaults: { _controller: KuakaoAdminBundle:Index:login }
+
+kuakao_admin_index_loginOut:
+    path:     /admin/loginOut
+    defaults: { _controller: KuakaoAdminBundle:Index:loginOut }
+
+kuakao_admin_tinfolog_index:
+    path:     /admin/infolog/
+    defaults: { _controller: "KuakaoAdminBundle:TInfoLog:index" }
+
+kuakao_admin_tquizanswer:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tquizanswer.yml"
+    prefix:   /admin
+
+kuakao_admin_majorschool:
+    resource: "@KuakaoAdminBundle/Resources/config/routing/tmajorschool.yml"
+    prefix:   /admin

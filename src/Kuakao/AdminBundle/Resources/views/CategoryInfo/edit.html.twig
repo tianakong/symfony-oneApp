@@ -1,0 +1,127 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>编辑咨讯</h1>
+    </div>
+    <link href="{{ asset('bundles/admin/css/plugins/fileinput/fileinput.css') }}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput_locale_zh.js') }}"></script>
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+        <input type="hidden" name="ajax" id="ajax" value="1">
+        <input type="hidden" name="infoid" value="{{ infoid }}" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">栏目：</label>
+            <div class="col-sm-10">
+                <select class="form-control col-30" name="catid" id="catid">
+                    {% for val in parentidData %}
+                        <option {% if tCategoryInfo.catid == val.catid %} selected="selected" {% endif %} value="{{ val.catid }}">{{ val.catname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">标题：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.title, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'标题'},'id':'title' })  }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="new_image">资讯图片上传：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.new_image, {'attr': {'class':'file-loading', 'check':'require', 'msg':'资讯图片不能为空'},'id':'new_image' })  }}
+            </div>
+        </div>
+
+    {#<script src="{{ asset('bundles/admin/ueditor/ueditor.config.js') }}"></script>
+    <script src="{{ asset('bundles/admin/ueditor/ueditor.all.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">内容：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.content, {'id':'content' })  }}
+            </div>
+        </div>
+    <script type="text/javascript">
+        var editor = new UE.ui.Editor({initialFrameHeight:380});
+        editor.render("content");
+    </script>#}
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">内容：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.content, {'attr': {'class':'form-control col-xs-12', 'rows':'15'},'id':'content' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">点赞数：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.praise, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'初始点赞数'},'id':'praise' })  }}
+            </div>
+        </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">专家姓名：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.name, {'attr': {'class':'form-control col-30', 'check':'require', 'placeholder':'专家说栏目','msg':'初始点赞数'},'id':'name' })  }}
+        </div>
+    </div>
+       {# <div class="form-group">
+            <label class="col-sm-2 control-label" for="status">状态：</label>
+            <div class="col-xs-9">
+                {{ form_widget( form.status, {'attr': {'class':'form-control'},'id':'status' })  }}
+            </div>
+        </div>#}
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="status">状态：</label>
+            <div class="col-xs-9">
+                <div class="checkbox">
+                    <label>
+                        {{ form_widget( form.status) }} 是否启用
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    <span id="msg"></span>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                {#<a onclick="save()"  class="btn btn-sm btn-primary">保存</a>#}
+                {{ form_widget( form.submit, {'attr': {'class':'btn btn-sm btn-primary'},'name':'确定修改' })  }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    $("#new_image").fileinput({
+        language: 'zh',
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        uploadAsync: false,
+        showUpload: false,
+        maxFileCount: 1,
+        initialPreview: [
+            "<img style='height:160px' src='{{ form.image.vars.value }}'>",
+        ]
+    });
+</script>
+<script>
+    function save() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_categoryinfo_edit', {'infoid':infoid}) }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

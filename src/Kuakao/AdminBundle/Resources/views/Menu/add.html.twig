@@ -1,0 +1,83 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block topMenu %}{% endblock %}
+{% block leftMenu %}{% endblock %}
+{% block cur %}{% endblock %}
+{% block body %}
+<div class="popup-fixed">
+    <div class="popup-header clearfix">
+        <div class="pull-left">
+            <h1>添加菜单</h1>
+        </div>
+        <div class="pull-right">
+            <a onclick="save_data();" class="btn btn-sm btn-primary">确定</a>
+            <a onclick="myclose();" class="btn btn-sm btn-default">关闭</a>
+        </div>
+    </div>
+    <div class="popup-body" style="height: 420px;overflow-y: auto;">
+        {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal clearfix'},'name':'form_data'} ) }}
+        {{ form_errors(form) }}
+            <div class="form-group col-xs-12">
+                <label class="col-xs-3 control-label" for="name">名称*：</label>
+                <div class="col-xs-9">
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control','check':'require','msg':'请输入名称'},'id':'name' }) }}
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="col-xs-3 control-label" for="url">上级菜单：</label>
+                <div class="col-xs-9">
+                    <div class="input-group">
+                        <input class="form-control val" id="node_name" type="text"  readonly="readonly"/>
+                        {{ form_widget(form.parentid, {'attr': {'class': 'form-control','check':'require','msg':'请选择父节点'},'id':'parentid','type':'hidden' }) }}
+                        {#<input name="form[parentid]"  id="parentid" type="hidden" msg="请选择父节点" check="require"  />#}
+							<span class="input-group-btn">
+								<button class="btn btn-sm btn-primary" onclick="select_pid()" type="button">选择</button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="col-xs-3 control-label" for="badge_function">路由名称：</label>
+                <div class="col-xs-9">
+                    {{ form_widget(form.routename, {'attr': {'class': 'form-control','check':'require','msg':'请填写路由名称'},'id':'routename' }) }}
+                    {{ form_widget(form.url, {'attr': {'class': 'form-control'},'id':'url','type':'hidden' }) }}
+                    {#<input class="form-control" type="text" id="badge_function" name="form[routename]" />#}
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="col-xs-3 control-label" for="sort">排序：</label>
+                <div class="col-xs-9">
+                    {{ form_widget(form.listorder, {'attr': {'class': 'form-control'},'id':'listorder' }) }}
+                    {#<input class="form-control" type="text" id="sort" name="form[listorder]" >#}
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="col-xs-3 control-label" for="is_del">显示菜单：</label>
+                <div class="col-xs-9">
+                    {{ form_widget(form.display, {'attr': {'class': 'form-control'},'id':'display' }) }}
+                    {#<select  name="form[display]" id="is_del" class="form-control">
+                        <option  value="1">是</option>
+                        <option value="0">否</option>
+                    </select>#}
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+<script>
+    function save_data() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_menu_add') }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

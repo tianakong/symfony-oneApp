@@ -1,0 +1,124 @@
+{% extends 'KuakaoAdminBundle:layout.html.twig' %}
+{% block body %}
+{% autoescape true %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>权限组管理</h1>
+    </div>
+    <div class="operate panel panel-default">
+        <div class="panel-body">
+            <div class="pull-right">
+                <a onclick="add();" class="btn btn-sm btn-primary">新增</a>
+                <a onclick="save_edit();" class="btn btn-sm btn-primary">保存</a>
+                |
+                <a onclick="del();" class="btn btn-sm btn-danger">删除</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 sub_left_menu ">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for val in data %}
+                <tr id="{{ val.id }}">
+                    <td>{{ val.rolename }}</td>
+                    <td>{{ val.disabled }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-8 sub_content">
+            {{ form_start(form, {'attr':{'id':'form_data','class':'well form-horizontal clearfix'},'name':'form_data'} ) }}
+                <input type="hidden" name="id" id="id" value="" />
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label" for="name">角色名称*：</label>
+                    <div class="col-sm-8">
+                        {{ form_widget( form.rolename, {'attr': {'class':'form-control', 'check':'require', 'msg':'请输入角色名称'},'id':'rolename' })  }}
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label" for="sort">排序：</label>
+                    <div class="col-sm-8">
+                        {{ form_widget( form.listorder, {'attr': {'class':'form-control'},'id':'listorder', 'value':'0' })  }}
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label"  for="disabled">状态：</label>
+                    <div class="col-sm-8">
+                        {{ form_widget( form.disabled, {'attr': {'class':'form-control'},'id':'disabled' })  }}
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-4 control-label" for="remark" >备注：</label>
+                    <div class="col-sm-8" >
+                        {{ form_widget( form.description, {'attr': {'class':'form-control col-xs-12', 'rows':'5'},'id':'description' })  }}
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script type="text/javascript">
+        function add() {
+            winopen("{{ path('kuakao_admin_adminrole_add') }}",560, 470);
+        };
+
+        function save_edit() {
+            if (check_form("form_data")) {
+                var vars = $("#form_data").serialize();
+                sendAjax("{{ path('kuakao_admin_adminrole_edit') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            parent.location.reload(true);
+                            myclose();
+                        });
+                    } else {
+                        ui_error(data.info);
+                    }
+                });
+            }
+        }
+
+        function del() {
+            var vars = $("#form_data").serialize();
+            ui_confirm('确定要删除吗?', function() {
+                sendAjax("{{ path('kuakao_admin_adminrole_delete') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            window.location.href="{{ path('kuakao_admin_adminrole_index') }}";
+                        });
+                    } else {
+                        ui_alert(data.info, function() {});
+                    }
+                });
+            });
+        }
+
+        function showdata(result) {
+            for (var s in result.data) {
+                set_val(s, result.data[s]);
+            }
+        }
+
+        $(document).ready(function() {
+            $(".sub_left_menu tbody tr").click(function() {
+                $(".sub_left_menu  tr.active").removeClass("active");
+                $(this).attr("class", "active");
+                sendAjax("{{ path('kuakao_admin_adminrole_read') }}", "id=" + $(this).attr("id"), function(data) {
+                    showdata(data);
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,41 @@
+<h1>跨考 EDU  OK</h1>
+
+
+<h1>TNews list</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Addtime</th>
+        <th>Adduser</th>
+        <th>Content</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for tNews in tNews %}
+        <tr>
+            <td><a href="{{ path('tnews_show', { 'id': tNews.id }) }}">{{ tNews.id }}</a></td>
+            <td>{{ tNews.title }}</td>
+            <td>{{ tNews.addtime }}</td>
+            <td>{{ tNews.adduser }}</td>
+            <td>{{ tNews.content }}</td>
+            <td>{% if tNews.status %}Yes{% else %}No{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('tnews_show', { 'id': tNews.id }) }}">show</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(tNews) }}
+
+
+

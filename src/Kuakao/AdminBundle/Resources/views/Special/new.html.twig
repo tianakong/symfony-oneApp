@@ -1,0 +1,116 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>添加专题</h1>
+    </div>
+
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+        <input type="hidden" name="ajax" id="ajax" value="1">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">标题：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.title, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入标题'},'id':'title' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">简介：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.description, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入简介'},'id':'description' })  }}
+            </div>
+        </div>
+
+        <link href="{{ asset('bundles/admin/css/plugins/fileinput/fileinput.css') }}" rel="stylesheet" type="text/css" />
+        <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput.js') }}"></script>
+        <script src="{{ asset('bundles/admin/js/plugins/fileinput/fileinput_locale_zh.js') }}"></script>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="image">专题图片：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.image, {'attr': {'class':'file-loading', 'check':'require', 'msg':'专题图片不能为空'},'id':'image' })  }}
+            </div>
+        </div>
+
+        {#<script src="{{ asset('bundles/admin/ueditor/ueditor.config.js') }}"></script>
+        <script src="{{ asset('bundles/admin/ueditor/ueditor.all.min.js') }}"></script>
+        <script src="{{ asset('bundles/admin/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="content">内容：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.content, {'id':'content' })  }}
+            </div>
+        </div>
+        <script type="text/javascript">
+            var editor = new UE.ui.Editor({initialFrameHeight:380});
+            editor.render("content");
+        </script>#}
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">内容：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.content, {'attr': {'class':'form-control col-xs-12', 'rows':'15'},'id':'content' })  }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">URL：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.url, {'attr': {'class':'form-control col-xs-12','placeholder':'外部URL'},'id':'url'})  }}
+            </div>
+        </div>
+        {#<div class="form-group col-xs-12">
+            <label class="col-xs-3 control-label" for="status">状态：</label>
+            <div class="col-xs-9">
+                {{ form_widget( form.status, {'attr': {'class':'form-control'},'id':'status' })  }}
+            </div>
+        </div>#}
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="status">状态：</label>
+            <div class="col-xs-9">
+                <div class="checkbox">
+                    <label>
+                        {{ form_widget( form.status) }} 是否启用
+                    </label>
+                </div>
+            </div>
+        </div>
+        <span id="msg"></span>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                {#<a onclick="save()"  class="btn btn-sm btn-primary">保存</a>#}
+                {{ form_widget( form.submit, {'attr': {'class':'btn btn-sm btn-primary'},'value':'sub','name':'提交'})  }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+    <script>
+        $("#image").fileinput({
+            language: 'zh',
+            allowedFileExtensions : ['jpg', 'png','gif'],
+            uploadAsync: false,
+            showUpload: false,
+            maxFileCount: 1
+        });
+    </script>
+    <script>
+        function save() {
+            if (check_form("form_data")) {
+                var vars = $("#form_data").serialize();
+                sendAjax("{{ path('kuakao_admin_special_new') }}", vars, function(data) {
+                    if (data.status) {
+                        ui_alert(data.info, function() {
+                            parent.location.reload(true);
+                            myclose();
+                        });
+                    } else {
+                        ui_error(data.info);
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,188 @@
+{% extends 'KuakaoAdminBundle::layout.html.twig' %}
+{% block body %}
+{% autoescape %}
+<div class="wrapper wrapper-content">
+    <div class="page-header">
+        <h1>编辑专业</h1>
+    </div>
+    {{ form_start(form, {'attr':{'id':'form_data','class':'form-horizontal well'},'name':'form_data'} ) }}
+        <input type="hidden" name="ajax" id="ajax" value="1">
+        <input type="hidden" name="id" value="{{ id }}" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="password">专业名称：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.name, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入专业名称'},'id':'name' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">专业代码：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.pronum, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入专业代码'},'id':'pronum' })  }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="list_rows">关注人数：</label>
+            <div class="col-sm-10">
+                {{ form_widget( form.gzrs, {'attr': {'class':'form-control col-30'},'id':'gzrs' })  }}
+            </div>
+        </div>
+  {#  <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">难度系数：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.ndxs, {'attr': {'class':'form-control col-30', 'check':'require', 'msg':'请输入难度系数'},'id':'ndxs' })  }}
+        </div>
+    </div>#}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">学科门类：</label>
+        <div class="col-sm-10">
+            <select class="form-control col-20" name="xkml" id="xkml" onchange="ml()">
+                <option value="0">请选择学科门类</option>
+                {% for val in Xkml %}
+                    <option {% if majorData.xkml == val %} selected="selected" {% endif %} value="{{ val }}">{{ val }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">一级学科：</label>
+        <div class="col-sm-10" id="ajaxyj">
+            <select class="form-control col-20" name="yjxk" id="yjxk">
+                <option value="0">请选择一级学科</option>
+                {% for val in Yjxk %}
+                    <option {% if majorData.yjxk == val.yjname %} selected="selected" {% endif %} value="{{ val.yjname }},{{ val.yjnum }}">{{ val.yjname }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    {#<div class="form-group">#}
+        {#<label class="col-sm-2 control-label" for="list_rows">数学类型：</label>#}
+        {#<div class="col-sm-10">#}
+            {#<select class="form-control col-20" name="mathlx" id="mathlx">#}
+                {#<option value="0">请选择数学类型</option>#}
+                {#{% for val in Math %}#}
+                    {#<option {% if majorData.mathlx == val %} selected="selected" {% endif %} value="{{ val }}">{{ val }}</option>#}
+                {#{% endfor %}#}
+            {#</select>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div class="form-group">#}
+        {#<label class="col-sm-2 control-label" for="list_rows">英语类型：</label>#}
+        {#<div class="col-sm-10">#}
+            {#<select class="form-control col-20" name="englishlx" id="englishlx">#}
+                {#<option value="0">请选择英语类型</option>#}
+                {#{% for val in English %}#}
+                    {#<option {% if majorData.englishlx == val %} selected="selected" {% endif %} value="{{ val }}">{{ val }}</option>#}
+                {#{% endfor %}#}
+            {#</select>#}
+        {#</div>#}
+    {#</div>#}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">专业类型：</label>
+        <div class="col-sm-10">
+            <select class="form-control col-20" name="zylx" id="zylx">
+                <option value="0">请选择专业类型</option>
+                {% for val in Zy %}
+                    <option {% if majorData.zylx == val %} selected="selected" {% endif %} value="{{ val }}">{{ val }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    {#<script src="{{ asset('bundles/admin/ueditor/ueditor.config.js') }}"></script>
+    <script src="{{ asset('bundles/admin/ueditor/ueditor.all.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">专业介绍：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.zyjs, {'attr': { 'check':'require', 'msg':'请输入专业介绍'},'id':'zyjs' })  }}
+        </div>
+    </div>
+    <script type="text/javascript">
+        var editor = new UE.ui.Editor({initialFrameHeight:380});
+        editor.render("zyjs");
+    </script>#}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">专业介绍：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.zyjs, {'attr': {'class':'form-control col-xs-12', 'rows':'15'},'id':'zyjs' })  }}
+        </div>
+    </div>
+
+    {#<div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">就业方向：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.jyfx, {'attr': { 'check':'require', 'msg':'请输入就业方向'},'id':'jyfx' })  }}
+        </div>
+    </div>
+    <script type="text/javascript">
+        var editor = new UE.ui.Editor({initialFrameHeight:380});
+        editor.render("jyfx");
+    </script>#}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">就业方向：</label>
+        <div class="col-sm-10">
+            {{ form_widget( form.jyfx, {'attr': {'class':'form-control col-xs-12', 'rows':'15'},'id':'jyfx' })  }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">所设院校：</label>
+        <div class="col-sm-10">
+            <input type="hidden" id="schoolIds" name="schoolIds" />
+            <input type="button" class="form-control col-30" value="选择院校" onclick="add()">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="list_rows">办学层次：</label>
+        <div class="col-sm-10">
+            <label>
+                <input type="checkbox" id="bksy" name="bksy" value="1" {% if majorData.schoolLevel == '1' or majorData.schoolLevel == '3' %} checked="checked" {% endif %}>本科生院
+            </label>
+            <label>
+                <input type="checkbox" id="yjsy" name="yjsy" value="2" {% if majorData.schoolLevel == '2' or majorData.schoolLevel == '3' %} checked="checked" {% endif %}>研究生院
+            </label>
+        </div>
+    </div>
+        <span id="msg"></span>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <a onclick="save()"  class="btn btn-sm btn-primary">保存</a>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endautoescape %}
+{% endblock %}
+{% block jsCode %}
+<script>
+    function save() {
+        if (check_form("form_data")) {
+            var vars = $("#form_data").serialize();
+            sendAjax("{{ path('kuakao_admin_tmajor_edit', {'id':id}) }}", vars, function(data) {
+                if (data.status) {
+                    ui_alert(data.info, function() {
+                        parent.location.reload(true);
+                        myclose();
+                    });
+                } else {
+                    ui_error(data.info);
+                }
+            });
+        }
+    }
+    function add() {
+        winopen("{{ path('kuakao_admin_tmajor_show') }}",560, 495);
+    };
+    function ml()
+    {
+        var ml = $("#xkml").val();
+        $.ajax({
+            type:"GET",
+            url:"{{ path('kuakao_admin_tmajor_ajaxyj') }}",
+            data:'xkml='+ml,
+            success:function(row){
+                $("#ajaxyj").html(row);
+            }
+        });
+    }
+</script>
+{% endblock %}

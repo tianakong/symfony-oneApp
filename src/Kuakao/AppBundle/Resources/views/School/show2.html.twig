@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <title>就业方向</title>
+    <script src="{{ asset('bundles/app/js/jquery-1.11.3.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/radialIndicator.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jquery.animateNumber.min.js') }}"></script>
+    <link rel="stylesheet" href="http://cachecss.kuakao.com/jixun/public/css/public.css" />
+    <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div class="gxxq">
+    <div class="job">
+        <div class="jobTit">
+            <div class="jobInfo br">
+                <div class="pieBox">
+                    <div id="indicatorContainer">
+                        <p class="t1">%</p>
+                        <p class="t2">就业率</p>
+                    </div>
+                </div>
+            </div>
+            <div class="jobInfo">
+                <h1 class="price"><span id="count4"></span>￥</h1>
+                <p class="priceText">平均薪酬</p>
+            </div>
+        </div>
+        <div class="jobText">
+            <p class="bl">毕业生分布前5的地区：</p>
+            <p>{{ data.areaTop }}</p>
+            <p class="bl">毕业生分布前5的行业：</p>
+            <p>{{ data.tradeTop }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+
+
+        //环形图效果
+        var percenNum = '{{ data.jyl }}'; // 数值传入这里
+        var radialObj = $('#indicatorContainer').radialIndicator({
+            displayNumber: true,
+            fontColor: '#666666',
+            fontFamily: 'Tahoma',
+            fontWeight: 'normal',
+            radius : 46,
+            barWidth : 4,
+            barBgColor : '#f0f0f0',
+            barColor : '#fe9c3b'
+        }).data('radialIndicator');
+        radialObj.animate(percenNum);
+
+        //平均薪酬
+        var num4 = '{{ data.averageWage }}';
+        $('#count4').prop('number', 0).animateNumber({
+            number: num4
+        },1000);
+    });
+
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</body>
+</html>

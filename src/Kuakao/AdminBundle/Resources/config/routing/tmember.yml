@@ -1,0 +1,20 @@
+kuakao_admin_member_index:
+    path:     /member/
+    defaults: { _controller: "KuakaoAdminBundle:TMember:index" }
+
+
+kuakao_admin_member_add:
+    path:     /member/add/
+    defaults: { _controller: "KuakaoAdminBundle:TMember:add" }
+
+kuakao_admin_member_edit:
+    path:     /member/edit/
+    defaults: { _controller: "KuakaoAdminBundle:TMember:edit" }
+
+kuakao_admin_member_delete:
+    path:     /member/delete/
+    defaults: { _controller: "KuakaoAdminBundle:TMember:delete" }
+
+kuakao_admin_member_show:
+    path:     /member/show/
+    defaults: { _controller: "KuakaoAdminBundle:TMember:show" }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/style.css') }}">
+    <script>
+        document.getElementsByTagName("html")[0].style.fontSize = 100 * (document.documentElement.clientWidth /750) + 'px';
+    </script>
+</head>
+<body>
+<section class="videoBar">
+    <section class="videoTop">
+        <div class="videoTeacher">
+            <div class="videoImg">
+                <img src="{{ videos.headPath }}" class="blk">
+            </div>
+            <div class="videoWord">
+                <h4>{{ videos.speaker }}</h4>
+                <p>
+                    {% autoescape %}
+                        {{ videos.title | raw }}
+                    {% endautoescape %}
+                </p>
+            </div>
+        </div>
+        {#<div class="videoDetail">
+            {% autoescape %}
+            {{ videos.detail | raw }}
+            {% endautoescape %}
+        </div>#}
+    </section>
+    <section class="videoBot">
+        <h4 class="theTit theTit2"><span></span>详情</h4>
+        <ul>
+            <li>
+                {% autoescape %}
+                    {{ videos.detail | raw }}
+                {% endautoescape %}
+            </li>
+        </ul>
+    </section>
+</section>
+</body>
+</html>
